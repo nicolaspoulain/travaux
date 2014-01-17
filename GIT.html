@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="Pandoc_plantUml_tx2tags/john-full.css" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#git---petit-guide-par-roger-dudler">Git - petit guide par <a href="http://www.twitter.com/rogerdudler">Roger Dudler</a></a><ul>
+<li><a href="#créer-un-nouveau-dépôt">créer un nouveau dépôt</a></li>
+<li><a href="#cloner-un-dépôt">cloner un dépôt</a></li>
+<li><a href="#arbres">arbres</a></li>
+<li><a href="#ajouter-valider">ajouter &amp; valider</a></li>
+<li><a href="#envoyer-des-changements">envoyer des changements</a></li>
+<li><a href="#branches">branches</a></li>
+<li><a href="#mettre-à-jour-fusionner">mettre à jour &amp; fusionner</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#remplacer-les-changements-locaux">remplacer les changements locaux</a></li>
+<li><a href="#conseils-utiles">conseils utiles</a></li>
+</ul></li>
+<li><a href="#from-github">From GitHub</a><ul>
+<li><a href="#got-15-minutes-and-want-to-learn-git">Got 15 minutes and want to learn Git?</a></li>
+<li><a href="#checking-the-status">Checking the Status</a></li>
+<li><a href="#adding-committing">Adding &amp; Committing</a></li>
+<li><a href="#adding-changes">Adding Changes</a></li>
+<li><a href="#checking-for-changes">Checking for Changes</a></li>
+<li><a href="#committing">Committing</a></li>
+<li><a href="#adding-all-changes">Adding All Changes</a></li>
+<li><a href="#committing-all-changes">Committing All Changes</a></li>
+<li><a href="#history">History</a></li>
+<li><a href="#remote-repositories">Remote Repositories</a></li>
+<li><a href="#pushing-remotely">Pushing Remotely</a></li>
+<li><a href="#pulling-remotely">Pulling Remotely</a></li>
+<li><a href="#differences">Differences</a></li>
+<li><a href="#staged-differences">Staged Differences</a></li>
+<li><a href="#staged-differences-contd">Staged Differences (cont’d)</a></li>
+<li><a href="#resetting-the-stage">Resetting the Stage</a></li>
+<li><a href="#undo">Undo</a></li>
+<li><a href="#branching-out">Branching Out</a></li>
+<li><a href="#switching-branches">Switching Branches</a></li>
+<li><a href="#removing-all-the-things">Removing All The Things</a></li>
+<li><a href="#commiting-branch-changes">Commiting Branch Changes</a></li>
+<li><a href="#switching-back-to-master">Switching Back to master</a></li>
+<li><a href="#preparing-to-merge">Preparing to Merge</a></li>
+<li><a href="#keeping-things-clean">Keeping Things Clean</a></li>
+<li><a href="#the-final-push">The Final Push</a></li>
+</ul></li>
+<li><a href="#things-i-frequently-do-and-forget-with-git">5 things I frequently do and forget with git</a><ul>
+<li><a href="#how-to-undo-the-last-git-commit">How to undo the last Git commit?</a></li>
+<li><a href="#how-to-change-the-commit-message-of-last-commit">How to change the commit message of last commit</a></li>
+<li><a href="#how-to-get-a-commit-back-after-reset-hard">How to get a commit back after ‘reset –hard’</a></li>
+<li><a href="#how-to-remove-a-git-submodule">How to remove a git submodule?</a></li>
+<li><a href="#how-to-delete-a-remote-git-branch">How to delete a remote git branch?</a></li>
+</ul></li>
+<li><a href="#notes-nico">Notes Nico</a><ul>
+<li><a href="#créer-un-repo-drupal-todo-réécrire">Créer un repo drupal (TODO : réécrire)</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="git---petit-guide-par-roger-dudler"><a href="#git---petit-guide-par-roger-dudler">Git - petit guide par <a href="http://www.twitter.com/rogerdudler">Roger Dudler</a></a></h1>
+<h2 id="créer-un-nouveau-dépôt"><a href="#créer-un-nouveau-dépôt">créer un nouveau dépôt</a></h2>
+<p>créez un nouveau dossier, ouvrez le et exécutez la commande <code>git init</code> pour créer un nouveau dépôt.</p>
+<h2 id="cloner-un-dépôt"><a href="#cloner-un-dépôt">cloner un dépôt</a></h2>
+<p>créez une copie de votre dépôt local en exécutant la commande <code>git clone /path/to/repository</code> si vous utilisez un serveur distant, cette commande sera <code>git clone username@host:/path/to/repository</code></p>
+<h2 id="arbres"><a href="#arbres">arbres</a></h2>
+<p>votre dépôt local est composé de trois “arbres” gérés par git. le premier est votre <code>espace de travail</code> qui contient réellement vos fichiers. le second est un <code>Index</code> qui joue un rôle d’espace de transit pour vos fichiers et enfin <code>HEAD</code> qui pointe vers la dernière validation que vous ayez fait.</p>
+<div class="figure">
+<img src="img/trees.png" />
+</div>
+<h2 id="ajouter-valider"><a href="#ajouter-valider">ajouter &amp; valider</a></h2>
+<p>Vous pouvez proposer un changement (l’ajouter à l’<strong>Index</strong>) en exécutant les commandes <code>git add &lt;filename&gt;</code> <code>git add *</code> C’est la première étape dans un workflow git basique. Pour valider ces changements, utilisez <code>git commit -m &quot;Message de validation&quot;</code> Le fichier est donc ajouté au <strong>HEAD</strong>, mais pas encore dans votre dépôt distant.</p>
+<h2 id="envoyer-des-changements"><a href="#envoyer-des-changements">envoyer des changements</a></h2>
+<p>Vos changements sont maintenant dans le <strong>HEAD</strong> de la copie de votre dépôt local. Pour les envoyer à votre dépôt distant, exécutez la commande <code>git push origin master</code> Remplacez <em>master</em> par la branche dans laquelle vous souhaitez envoyer vos changements.</p>
+<p>Si vous n’avez pas cloné votre dépôt existant et voulez le connecter à votre dépôt sur un serveur distant, vous devez l’ajouter avec <code>git remote add origin &lt;server&gt;</code> Maintenant, vous pouvez envoyer vos changements vers le serveur distant sélectionné</p>
+<h2 id="branches"><a href="#branches">branches</a></h2>
+<p>Les branches sont utilisées pour développer des fonctionnalités isolées des autres. La branche <em>master</em> est la branche par défaut quand vous créez un dépôt. Utilisez les autres branches pour le développement et fusionnez ensuite à la branche principale quand vous avez fini.</p>
+<div class="figure">
+<img src="img/branches.png" />
+</div>
+<p>créer une nouvelle branche nommée “feature_x” et passer dessus pour l’utiliser <code>git checkout -b feature_x</code> retourner sur la branche principale <code>git checkout master</code> et supprimer la branche <code>git branch -d feature_x</code> une branche n’est <em>pas disponible pour les autres</em> tant que vous ne l’aurez pas envoyée vers votre dépôt distant <code>git push origin &lt;branch&gt;</code></p>
+<h2 id="mettre-à-jour-fusionner"><a href="#mettre-à-jour-fusionner">mettre à jour &amp; fusionner</a></h2>
+<p>pour mettre à jour votre dépôt local vers les dernières validations, exécutez la commande <code>git pull</code> dans votre espace de travail pour <em>récupérer</em> et <em>fusionner</em> les changements distants. pour fusionner une autre branche avec la branche active (par exemple master), utilisez <code>git merge &lt;branch&gt;</code> dans les deux cas, git tente d’auto-fusionner les changements. Malheureusement, ça n’est pas toujours possible et résulte par des <em>conflits</em>. Vous devez alors régler ces <em>conflits</em> manuellement en éditant les fichiers indiqués par git. Après l’avoir fait, vous devez les marquer comme fusionnés avec <code>git add &lt;filename&gt;</code> après avoir fusionné les changements, vous pouvez en avoir un aperçu en utilisant <code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>
+<h2 id="tags"><a href="#tags">tags</a></h2>
+<p>il est recommandé de créer des tags pour les releases de programmes. c’est un concept connu, qui existe aussi dans SVN. Vous pouvez créer un tag nommé <em>1.0.0</em> en exécutant la commande <code>git tag 1.0.0 1b2e1d63ff</code> le <em>1b2e1d63ff</em> désigne les 10 premiers caractères de l’identifiant du changement que vous voulez référencer avec ce tag. Vous pouvez obtenir cet identifiant avec <code>git log</code> vous pouvez utiliser moins de caractères de cet identifiant, il doit juste rester unique.</p>
+<h2 id="remplacer-les-changements-locaux"><a href="#remplacer-les-changements-locaux">remplacer les changements locaux</a></h2>
+<p>Dans le cas où vous auriez fait quelque chose de travers (ce qui bien entendu n’arrive jamais ;) vous pouvez annuler les changements locaux en utilisant cette commande <code>git checkout -- &lt;filename&gt;</code> cela remplacera les changements dans votre arbre de travail avec le dernier contenu du HEAD. Les changements déjà ajoutés à l’index, aussi bien les nouveaux fichiers, seront gardés.</p>
+<p>Si à la place vous voulez supprimer tous les changements et validations locaux, récupérez le dernier historique depuis le serveur et pointez la branche principale locale dessus comme ceci <code>git fetch origin</code> <code>git reset --hard origin/master</code></p>
+<h2 id="conseils-utiles"><a href="#conseils-utiles">conseils utiles</a></h2>
+<p>Interface git incluse</p>
+<pre><code>`gitk`</code></pre>
+<p>utiliser des couleurs dans la sortie de git</p>
+<pre><code>`git config color.ui true`</code></pre>
+<p>afficher le journal sur une seule ligne pour chaque validation</p>
+<pre><code>`git config format.pretty oneline`</code></pre>
+<p>utiliser l’ajout interactif</p>
+<pre><code>`git add -i`</code></pre>
+<h1 id="from-github"><a href="#from-github">From GitHub</a></h1>
+<h2 id="got-15-minutes-and-want-to-learn-git"><a href="#got-15-minutes-and-want-to-learn-git">Got 15 minutes and want to learn Git?</a></h2>
+<p>Git allows groups of people to work on the same documents (often code) at the same time, and without stepping on each other’s toes. It’s a distributed version control system.</p>
+<p>To initialize a Git repository here, type the following command:</p>
+<pre><code>$ git init
+Initialized empty Git repository in /.git/</code></pre>
+<blockquote>
+<dl>
+<dt>Directory:</dt>
+<dd>A folder used for storing multiple files.
+</dd>
+<dt>Repository:</dt>
+<dd>A directory where Git has been initialized to start version controlling your files.
+</dd>
+</dl>
+</blockquote>
+<h2 id="checking-the-status"><a href="#checking-the-status">Checking the Status</a></h2>
+<p>Good job! As Git just told us, our octobox directory now has an empty repository in /.git/. The repository is a hidden directory where Git operates.</p>
+<p>Next up, let’s type the git status command to see what the current state of our project is:</p>
+<pre><code>$ git status
+# On branch master
+#
+# Initial commit
+#
+nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
+<blockquote>
+<dl>
+<dt>The .git directory :</dt>
+<dd>you’ll notice it has all sorts of directories and files inside it.
+</dd>
+<dd>You’ll rarely ever need to do anything inside here but it’s the guts of Git,
+</dd>
+<dd>where all the magic happens.
+</dd>
+</dl>
+</blockquote>
+<h2 id="adding-committing"><a href="#adding-committing">Adding &amp; Committing</a></h2>
+<p>Say you created a file called octocat.txt in the octobox repository</p>
+<p>You should run the git status command again to see how the repository status has changed:</p>
+<pre><code>$ git status
+
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+#
+#
+# octocat.txt
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<blockquote>
+<p>Tip: It’s healthy to run git status often. Sometimes things change and you don’t notice it.</p>
+</blockquote>
+<h2 id="adding-changes"><a href="#adding-changes">Adding Changes</a></h2>
+<p>Good, it looks like our Git repository is working properly. Notice how Git says octocat.txt is “untracked”? That means Git sees that octocat.txt is a new file.</p>
+<p>To tell Git to start tracking changes made to octocat.txt, we first need to add it to the staging area by using git add.</p>
+<pre><code>$ git add octocat.txt</code></pre>
+<blockquote>
+<dl>
+<dt>staged:</dt>
+<dd>Files are ready to be committed.
+</dd>
+<dt>unstaged:</dt>
+<dd>Files with changes that have not been prepared to be commited.
+</dd>
+<dt>untracked:</dt>
+<dd>Files aren’t tracked by Git yet. This usually indicates a newly created file.
+</dd>
+<dt>deleted:</dt>
+<dd>File has been deleted and is waiting to be removed from Git.
+</dd>
+</dl>
+</blockquote>
+<h2 id="checking-for-changes"><a href="#checking-for-changes">Checking for Changes</a></h2>
+<p>Good job! Git is now tracking our octocat.txt file. Let’s run git status again to see where we stand:</p>
+<pre><code>$ git status
+
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+#
+#</code></pre>
+<blockquote>
+<dl>
+<dt>add all:</dt>
+<dd>You can also type git add .. The dot represents the current directory, so
+</dd>
+<dd>everything in it, and everything beneath it gets added.
+</dd>
+<dt>git reset:</dt>
+<dd>You can use git reset <filename> to remove a file or files from the staging
+</dd>
+<dd>area.
+</dd>
+</dl>
+</blockquote>
+<h2 id="committing"><a href="#committing">Committing</a></h2>
+<p>Notice how Git says changes to be committed? The files listed here are in the Staging Area, and they are not in our repository yet. We could add or remove files from the stage before we store them in the repository.</p>
+<p>To store our staged changes we run the commit command with a message describing what we’ve changed. Let’s do that now by typing:</p>
+<pre><code>$ git commit -m &quot;Add cute octocat story&quot;
+
+[master (root-commit) 20b5ccd] Add cute octocat story
+1 file changed, 1 insertion(+)
+create mode 100644 octocat.txt</code></pre>
+<blockquote>
+<dl>
+<dt>Staging Area:</dt>
+<dd>A place where we can group files together before we “commit” them to Git.
+</dd>
+<dt>Commit</dt>
+<dd>A “commit” is a snapshot of our repository. This way if we ever need to look
+</dd>
+<dd>back at the changes we’ve made (or if someone else does), we will see a nice
+</dd>
+<dd>timeline of all changes.
+</dd>
+</dl>
+</blockquote>
+<h2 id="adding-all-changes"><a href="#adding-all-changes">Adding All Changes</a></h2>
+<p>Great! You also can use wildcards if you want to add many files of the same type. Notice that I’ve added a bunch of .txt files into your directory below.</p>
+<p>I put some in an octofamily directory and some others ended up in the root of our octobox. Luckily, we can add all the new files using a wildcard with git add. Don’t forget the quotes!</p>
+<pre><code>git add &#39;*.txt&#39;</code></pre>
+<blockquote>
+<dl>
+<dt>Wildcards:</dt>
+<dd>We need quotes so that Git will receive the wildcard before our shell can
+</dd>
+<dd>interfere with it. Without quotes our shell will only execute the wildcard
+</dd>
+<dd>search within the current directory. Git will receive the list of files the
+</dd>
+<dd>shell found instead of the wildcard and it will not be able to add the files
+</dd>
+<dd>inside of the octofamily directory.
+</dd>
+</dl>
+</blockquote>
+<h2 id="committing-all-changes"><a href="#committing-all-changes">Committing All Changes</a></h2>
+<p>Okay, you’ve added all the text files to the staging area. Feel free to run git status to see what you’re about to commit.</p>
+<p>If it looks good, go ahead and run:</p>
+<pre><code>git commit -m &#39;Add all the octocat txt files&#39;
+
+[master 3852b4d] Add all the octocat txt files
+ 4 files changed, 4 insertions(+)
+ create mode 100644 blue_octocat.txt
+ create mode 100644 octofamily/baby_octocat.txt
+ create mode 100644 octofamily/momma_octocat.txt
+ create mode 100644 red_octocat.txt
+
+
+ Check all the things!</code></pre>
+<blockquote>
+<dl>
+<dt>~ When using wildcards you want to be extra careful when doing commits. Make sure</dt>
+<dd>to check what files and folders are staged by using git status before you do the
+</dd>
+<dd>actual commit. This way you can be sure you’re committing only the things you
+</dd>
+<dd>want.
+</dd>
+</dl>
+</blockquote>
+<h2 id="history"><a href="#history">History</a></h2>
+<p>So we’ve made a few commits. Now let’s browse them to see what we changed.</p>
+<p>Fortunately for us, there’s git log. Think of Git’s log as a journal that remembers all the changes we’ve committed so far, in the order we committed them. Try running it now:</p>
+<pre><code>$ git log
+
+commit 3852b4db1634463d0bb4d267edb7b3f9cd02ace1
+Author: Try Git &lt;try_git@github.com&gt;
+Date:   Sat Oct 10 08:30:00 2020 -0500
+
+    Add all the octocat txt files
+
+commit b652edfd888cd3d5e7fcb857d0dabc5a0fcb5e28
+Author: Try Git &lt;try_git@github.com&gt;
+Date:   Sat Oct 10 08:30:00 2020 -0500
+
+Added cute octocat story</code></pre>
+<blockquote>
+<dl>
+<dt>More useful logs:</dt>
+<dd>Use git log –summary to see more information for each commit. You can see where
+</dd>
+<dd>new files were added for the first time or where files were deleted. It’s a good
+</dd>
+<dd>overview of what’s going on in the project.
+</dd>
+</dl>
+</blockquote>
+<h2 id="remote-repositories"><a href="#remote-repositories">Remote Repositories</a></h2>
+<p>Great job! We’ve gone ahead and created a new empty GitHub repository for you to use with Try Git at https://github.com/try-git/try_git.git. To push our local repo to the GitHub server we’ll need to add a remote repository.</p>
+<p>This command takes a remote name and a repository URL, which in your case is https://github.com/try-git/try_git.git.</p>
+<p>Go ahead and run git remote add with the options below:</p>
+<p>git remote add origin https://github.com/try-git/try_git.git</p>
+<blockquote>
+<dl>
+<dt>git remote:</dt>
+<dd>Git doesn’t care what you name your remotes, but it’s typical to name your main
+</dd>
+<dd>one origin.
+</dd>
+<dd>It’s also a good idea for your main repository to be on a remote server like
+</dd>
+<dd>GitHub in case your machine is lost at sea during a transatlantic boat cruise or
+</dd>
+<dd>crushed by three monkey statues during an earthquake.
+</dd>
+</dl>
+</blockquote>
+<h2 id="pushing-remotely"><a href="#pushing-remotely">Pushing Remotely</a></h2>
+<p>The push command tells Git where to put our commits when we’re ready, and boy we’re ready. So let’s push our local changes to our origin repo (on GitHub).</p>
+<p>The name of our remote is origin and the default local branch name is master. The -u tells Git to remember the parameters, so that next time we can simply run git push and Git will know what to do. Go ahead and push it!</p>
+<pre><code>$ git push -u origin master
+
+Branch master set up to track remote branch master from origin.</code></pre>
+<blockquote>
+<p><em>Cool Stuff</em> : When you start to get the hang of git you can do some really cool things with hooks when you push.</p>
+<p>For example, you can upload directly to a webserver whenever you push to your master remote instead of having to upload your site with an ftp client. Check out Customizing Git - Git Hooks for more information.</p>
+</blockquote>
+<h2 id="pulling-remotely"><a href="#pulling-remotely">Pulling Remotely</a></h2>
+<p>Let’s pretend some time has passed. We’ve invited other people to our github project who have pulled your changes, made their own commits, and pushed them.</p>
+<p>We can check for changes on our GitHub repository and pull down any new changes by running:</p>
+<pre><code>$ git pull origin master
+
+Updating 3852b4d..3e70b0f
+Fast-forward
+ yellow_octocat.txt |    1+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 yellow_octocat.txt</code></pre>
+<blockquote>
+<p><em>git stash</em> : Sometimes when you go to pull you may have changes you don’t want to commit just yet. One option you have, other than commiting, is to stash the changes. Use the command ‘git stash’ to stash your changes, and ‘git stash apply’ to re-apply your changes after your pull.</p>
+</blockquote>
+<h2 id="differences"><a href="#differences">Differences</a></h2>
+<p>Uh oh, looks like there has been some additions and changes to the octocat family. Let’s take a look at what is different from our last commit by using the git diff command.</p>
+<p>In this case we want the diff of our most recent commit, which we can refer to using the HEAD pointer.</p>
+<pre><code>$ git diff HEAD
+
+diff --git a/octocat.txt b/octocat.txt
+index 7d8d808..e725ef6 100644
+-------- a/octocat.txt
++++ b/octocat.txt
+@@ -1 +1 @@
+-A Tale of Two Octocats
+Tale of Two Octocats and an Octodog</code></pre>
+<blockquote>
+<p><em>HEAD</em> The HEAD is a pointer that holds your position within all your different Tale of Two Octocats commits. By default HEAD points to your most recent commit, so it can be used as a quick way to reference that commit without having to look up the SHA.</p>
+</blockquote>
+<h2 id="staged-differences"><a href="#staged-differences">Staged Differences</a></h2>
+<p>Another great use for diff is looking at changes within files that have already been staged. Remember, staged files are files we have told git that are ready to be committed.</p>
+<p>Let’s use git add to stage octofamily/octodog.txt, which I just added to the family for you.</p>
+<pre><code>$ git add octofamily/octodog.txt</code></pre>
+<blockquote>
+<p><em>Commit Etiquette</em> : You want to try to keep related changes together in separate commits. Using ‘git diff’ gives you a good overview of changes you have made and lets you add files or directories one at a time and commit them separately.</p>
+</blockquote>
+<h2 id="staged-differences-contd"><a href="#staged-differences-contd">Staged Differences (cont’d)</a></h2>
+<p>Good, now go ahead and run git diff with the –staged option to see the changes you just staged. You should see that octodog.txt was created.</p>
+<pre><code>$ git diff --staged
+
+diff --git a/octofamily/octodog.txt b/octofamily/octodog.txt
+new file mode 100644
+index 0000000..cfbc74a
+-------- /dev/null
++++ b/octofamily/octodog.txt
+@@ -0,0 +1 @@
++[mwoof</code></pre>
+<h2 id="resetting-the-stage"><a href="#resetting-the-stage">Resetting the Stage</a></h2>
+<p>So now that octodog is part of the family, octocat is all depressed. Since we love octocat more than octodog, we’ll turn his frown around by removing octodog.txt.</p>
+<p>You can unstage files by using the git reset command. Go ahead and remove octofamily/octodog.txt.</p>
+<pre><code>$ git reset octofamily/octodog.txt</code></pre>
+<h2 id="undo"><a href="#undo">Undo</a></h2>
+<p>git reset did a great job of unstaging octodog.txt, but you’ll notice that he’s still there. He’s just not staged anymore. It would be great if we could go back to how things were before octodog came around and ruined the party.</p>
+<p>Files can be changed back to how they were at the last commit by using the command: git checkout – <target>. Go ahead and get rid of all the changes since the last commit for octocat.txt</p>
+<pre><code>$ git checkout -- octocat.txt</code></pre>
+<blockquote>
+<p><em>The ‘–’</em> So you may be wondering, why do I have to use this ‘–’ thing? git checkout seems to work fine without it. It’s simply promising the command line that there are no more options after the ‘–’. This way if you happen to have a branch named octocat.txt, it will still revert the file, instead of switching to the branch of the same name.</p>
+</blockquote>
+<h2 id="branching-out"><a href="#branching-out">Branching Out</a></h2>
+<p>When developers are working on a feature or bug they’ll often create a copy (aka. branch) of their code they can make separate commits to. Then when they’re done they can merge this branch back into their main master branch.</p>
+<p>We want to remove all these pesky octocats, so let’s create a branch called clean_up, where we’ll do all the work:</p>
+<pre><code>$ git branch clean_up</code></pre>
+<blockquote>
+<p><em>Branching</em> : Branches are what naturally happens when you want to work on multiple features at the same time. You wouldn’t want to end up with a master branch which has Feature A half done and Feature B half done.</p>
+<p>Rather you’d separate the code base into two “snapshots” (branches) and work on and commit to them separately. As soon as one was ready, you might merge this branch back into the master branch and push it to the remote server.</p>
+</blockquote>
+<h2 id="switching-branches"><a href="#switching-branches">Switching Branches</a></h2>
+<p>Great! Now if you type git branch you’ll see two local branches: a main branch named master and your new branch named clean_up.</p>
+<p>You can switch branches using the git checkout <branch> command. Try it now to switch to the clean_up branch:</p>
+<pre><code>$ git checkout clean_up
+
+Switched to branch &#39;clean_up&#39;</code></pre>
+<blockquote>
+<p>All at Once You can use:</p>
+<p><code>git checkout -b new_branch</code></p>
+<p>to checkout and create a branch at the same time. This is the same thing as doing:</p>
+<p><code>git branch new_branch</code></p>
+<p><code>git checkout new_branch</code></p>
+</blockquote>
+<h2 id="removing-all-the-things"><a href="#removing-all-the-things">Removing All The Things</a></h2>
+<p>Ok, so you’re in the clean_up branch. You can finally remove all those pesky octocats by using the git rm command which will not only remove the actual files from disk, but will also stage the removal of the files for us.</p>
+<p>You’re going to want to use a wildcard again to get all the octocats in one sweep, go ahead and run:</p>
+<pre><code>$ git rm &#39;*.txt&#39;
+
+rm &#39;blue_octocat.txt&#39;
+rm &#39;octocat.txt&#39;
+rm &#39;octofamily/baby_octocat.txt&#39;
+rm &#39;octofamily/momma_octocat.txt&#39;
+rm &#39;red_octocat.txt&#39;</code></pre>
+<blockquote>
+<p>Remove all the things! Removing one file is great and all, but what if you want to remove an entire folder? You can use the recursive option on git rm:</p>
+<p><code>git rm -r folder_of_cats</code></p>
+<p>This will recursively remove all folders and files from the given directory.</p>
+</blockquote>
+<h2 id="commiting-branch-changes"><a href="#commiting-branch-changes">Commiting Branch Changes</a></h2>
+<p>Now that you’ve removed all the cats you’ll need to commit your changes.</p>
+<p>Feel free to run git status to check the changes you’re about to commit.</p>
+<pre><code>$ git commit -m &quot;Remove all the cats&quot;
+
+[clean_up 63540fe] Remove all the cats
+ 5 files changed, 5 deletions(-)
+ delete mode 100644 blue_octocat.txt
+ delete mode 100644 octocat.txt
+ delete mode 100644 octofamily/baby_octocat.txt
+ delete mode 100644 octofamily/momma_octocat.txt
+ delete mode 100644 red_octocat.txt</code></pre>
+<blockquote>
+<p>The ‘-a’ option If you happen to delete a file without using <code>git rm</code> you’ll find that you still have to <code>git rm</code> the deleted files from the working tree. You can save this step by using the <code>-a</code> option on ‘git commit’, which auto removes deleted files with the commit.</p>
+<p><code>git commit -am &quot;Delete stuff&quot;</code></p>
+</blockquote>
+<h2 id="switching-back-to-master"><a href="#switching-back-to-master">Switching Back to master</a></h2>
+<p>Great, you’re almost finished with the cat… er the bug fix, you just need to switch back to the master branch so you can copy (or merge) your changes from the clean_up branch back into the master branch.</p>
+<p>Go ahead and checkout the master branch:</p>
+<pre><code>$ git checkout master
+
+Switched to branch &#39;master&#39;</code></pre>
+<blockquote>
+<p>Pull Requests If you’re hosting your repo on GitHub, you can do something called a pull request.</p>
+<p>A pull request allows the boss of the project to look through your changes and make comments before deciding to merge in the change. It’s a really great feature that is used all the time for remote workers and open-source projects.</p>
+<p>Check out out the pull request help page for more information.</p>
+</blockquote>
+<h2 id="preparing-to-merge"><a href="#preparing-to-merge">Preparing to Merge</a></h2>
+<p>Alrighty, the moment has come when you have to merge your changes from the clean_up branch into the master branch. Take a deep breath, it’s not that scary.</p>
+<p>We’re already on the master branch, so we just need to tell Git to merge the clean_up branch into it:</p>
+<pre><code>$ git merge clean_up
+
+Updating 3852b4d..ec6888b
+Fast-forward
+ blue_octocat.txt             |    1 -
+ octocat.txt                  |    1 -
+ octofamily/baby_octocat.txt  |    1 -
+ octofamily/momma_octocat.txt |    1 -
+ red_octocat.txt              |    1 -
+ 5 files changed, 5 deletions(-)
+ delete mode 100644 blue_octocat.txt
+ delete mode 100644 octocat.txt
+ delete mode 100644 octofamily/baby_octocat.txt
+ delete mode 100644 octofamily/momma_octocat.txt
+ delete mode 100644 red_octocat.txt</code></pre>
+<blockquote>
+<p>Merge Conflicts</p>
+<p>Merge Conflicts can occur when changes are made to a file at the same time. A lot of people get really scared when a conflict happens, but fear not! They aren’t that scary, you just need to decide which code to keep.</p>
+<p>Merge conflicts are beyond the scope of this course, but if you’re interested in reading more, take a look the section of the Pro Git book on how conflicts are presented.</p>
+</blockquote>
+<h2 id="keeping-things-clean"><a href="#keeping-things-clean">Keeping Things Clean</a></h2>
+<p>Congratulations! You just accomplished your first successful bugfix and merge. All that’s left to do is clean up after yourself. Since you’re done with the clean_up branch you don’t need it anymore.</p>
+<p>You can use <code>git branch -d &lt;branch name&gt;</code> to delete a branch. Go ahead and delete the clean_up branch now:</p>
+<pre><code>$ git branch -d clean_up
+
+Deleted branch clean_up (was ec6888b).</code></pre>
+<blockquote>
+<p>What if you aae been working on a feature branch and you decide you really don’t want this feature anymore? You might decide to delete the branch since you’re scrapping the idea. You’ll notice that <code>git branch -d bad_feature</code> doesn’t</p>
+<p>work. This is because -d won’t let you delete something that hasn’t been merged. You can either add the <code>--force (-f)</code> option or use <code>-D</code> which combines <code>-d -f</code> together into one command.</p>
+</blockquote>
+<h2 id="the-final-push"><a href="#the-final-push">The Final Push</a></h2>
+<p>Here we are, at the last step. I’m proud that you’ve made it this far, and it’s been great learning Git with you. All that’s left for you to do now is to push everything you’ve been working on to your remote repository, and you’re done!</p>
+<pre><code>$git push
+
+To https://github.com/try-git/try_git.git
+   3e70b0f..b07babc  master -&gt; master</code></pre>
+<h1 id="things-i-frequently-do-and-forget-with-git"><a href="#things-i-frequently-do-and-forget-with-git">5 things I frequently do and forget with git</a></h1>
+<p>Here are few things I used to do a lot in my starting days with git and then forgot to re-search them when needed next time. These tips are from my notes.</p>
+<h2 id="how-to-undo-the-last-git-commit"><a href="#how-to-undo-the-last-git-commit">How to undo the last Git commit?</a></h2>
+<p>There are two scenarios in this case, and hence two ways to achieve our goal.</p>
+<h4 id="hard-reset---completely-undo-the-last-commit-and-all-the-changes-it-made."><a href="#hard-reset---completely-undo-the-last-commit-and-all-the-changes-it-made.">Hard Reset - Completely undo the last commit and all the changes it made.</a></h4>
+<pre><code>git reset --hard HEAD\~1</code></pre>
+<p>Imagine the state of the tree is as following:</p>
+<pre><code> A-B-C</code></pre>
+<p>where <code>B</code> is the current state of files and <code>C</code> is the commit we want to undo. The above command completely removes the last commit along with all the changes involved in the commit. The new state of the tree is like this:</p>
+<pre><code> A-B</code></pre>
+<blockquote>
+<p><strong>What is <code>HEAD?</code></strong></p>
+<p>We can think of the HEAD as the “current branch”. HEAD is basically a pointer which points to the latest commit. When we switch branches with git checkout, the HEAD revision changes to point to the tip of the new branch.</p>
+<p><strong>What is <code>HEAD\~1</code>?</strong></p>
+<p>It’s kind of complicated to explain <code>HEAD\~1</code> without explaining <code>HEAD\^1</code>. <code>HEAD\^1</code>  means the first parent of the commit object. ^ means the th parent. <code>HEAD\~1</code> means the commit object that is the first generation grand-parent of the named commit object, following only the first parents. e.g <code>\~3</code> is equivalent to <code>\^\^\^</code> which is equivalent to <code>\^1\^1\^1</code>.</p>
+</blockquote>
+<h4 id="undo-the-commit-but-keep-the-changes"><a href="#undo-the-commit-but-keep-the-changes">Undo the commit but keep the changes</a></h4>
+<pre><code>git reset HEAD\~1</code></pre>
+<p>If we want to undo the last commit for some reason (like if we entered the wrong commit message or the commit was incomplete), we can use a soft reset on HEAD. In this case, the tree structure changes to something like:</p>
+<pre><code> A-B-C</code></pre>
+<blockquote>
+<p><strong>What’s happening?</strong></p>
+<p>In both cases, <code>HEAD</code> is just a pointer to the latest commit. When we do a git reset <code>HEAD\~1</code>, we tell Git to move the <code>HEAD</code> pointer back one commit. But (unless we use –hard) we leave your files as they were. So now git status shows the changes you had checked into C. You haven’t lost a thing!</p>
+</blockquote>
+<h2 id="how-to-change-the-commit-message-of-last-commit"><a href="#how-to-change-the-commit-message-of-last-commit">How to change the commit message of last commit</a></h2>
+<pre><code>git reset --soft HEAD\~1</code></pre>
+<p>Using this command we undo the last commit but keep the files as well as the index untouched. This means we can just recommit with no extra effort as a new commit with a new commit message.</p>
+<blockquote>
+<p><strong>What’s happening here?</strong></p>
+<p>Same as first point. But it leaves the files as well as the index unchanged, so we just need to ‘commit’ again with a new commit message.</p>
+</blockquote>
+<h2 id="how-to-get-a-commit-back-after-reset-hard"><a href="#how-to-get-a-commit-back-after-reset-hard">How to get a commit back after ‘reset –hard’</a></h2>
+<p>In the first point, we undid the previous commit permanently(?). Sometimes (read often) it happens that we need the destroyed commit back. Following commands can be used to resurrect the destroyed commit.</p>
+<pre><code>git reflog</code></pre>
+<p>This command shows a list of partial commit shas. We need to choose the commit we want to restore from this list and use following command.</p>
+<pre><code>git checkout -b someNewBranchName shaOfDestroyedCommit</code></pre>
+<p>This will create a new branch and restore the destroyed commit in it, which we can re-merge as required.</p>
+<blockquote>
+<p><strong>What’s happening here?</strong></p>
+<p>Commits don’t actually get destroyed in git for about 90 days. So usually we can go back and restore commits with method explained above.</p>
+</blockquote>
+<h2 id="how-to-remove-a-git-submodule"><a href="#how-to-remove-a-git-submodule">How to remove a git submodule?</a></h2>
+<pre><code>Git submodule?</code></pre>
+<p>Submodules allow foreign repositories to be embedded within a dedicated subdirectory of the source tree, always pointed at a particular commit. Submodules are meant for different projects you would like to make part of your source tree, while the history of the two projects still stays completely independent and you cannot modify the contents of the submodule from within the main project.</p>
+<h4 id="removing-a-git-submodule"><a href="#removing-a-git-submodule">Removing a git submodule</a></h4>
+<p>Git submodules can simply be removed with ‘git rm’, but that keeps the submodule entry intact in the .git/config and .gitmodules. There is actually an easier way to remove submodules with a single command.</p>
+<pre><code>git submodule deinit </code></pre>
+<p>This is in comprehension to ‘git submodule init’ command and does all the submodule removal work itself.</p>
+<h2 id="how-to-delete-a-remote-git-branch"><a href="#how-to-delete-a-remote-git-branch">How to delete a remote git branch?</a></h2>
+<p>This one is easy. We just need one command to delete a remote branch.</p>
+<pre><code>git push origin --delete </code></pre>
+<p>To remove a local branch, we can of course use</p>
+<pre><code>git branch -d </code></pre>
+<h1 id="notes-nico"><a href="#notes-nico">Notes Nico</a></h1>
+<p>Autre très bon tuto : http://www.miximum.fr/tutos/1546-enfin-comprendre-git</p>
+<p>REMARQUE : The branches, the tags, the HEAD are just fancy aliases for commits (more on these in some other post (next may be)). A commit is basically the snapshot of present working tree.</p>
+<h2 id="créer-un-repo-drupal-todo-réécrire"><a href="#créer-un-repo-drupal-todo-réécrire">Créer un repo drupal (TODO : réécrire)</a></h2>
+<p>Pour le moment nous limitons à un dépôt par vhost. Voici un petit exemple à exécuter localement sur votre machine :</p>
+<pre><code>$ mkdir {vhost}
+$ cd {vhost}
+$ git init
+
+
+$ git clone http://git.drupal.org/project/drupal.git fooproject
+$ cd fooproject
+$ git checkout 7.0
+$ git remote rename origin drupalOrg
+$ git remote add dev   /var/wwww/dev
+$ git remote add stage /var/www/stage
+$ git remote add origin ssh+git://{login}@git.{datacenter_location}.gpaas.net/{vhost}.git
+$ mkdir htdocs
+$ echo &quot;Hello world&quot; &gt; htdocs/index.html
+$ git add htdocs
+$ git commit -m &quot;first version of index.html&quot; htdocs
+$ git push origin master</code></pre>
+</body>
+</html>

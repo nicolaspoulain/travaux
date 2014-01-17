@@ -1,0 +1,52 @@
+/*
+*************************************************
+
+Happy Cog
+Print Styles
+
+Created by the friendly folks at Happy Cog
+http://www.happycog.com/
+
+*************************************************
+*/
+
+
+body { font: 9pt/1.3 "Times New Roman", Times, Georgia, serif; color: #282827; border: none; }
+
+h1, h2, h3, h4, h5, h6 { letter-spacing: 1px; }
+h1 a { text-decoration: none; }
+h2 { font-size: 16pt; }
+h3 { font-size: 14pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 9pt; }
+h6 { font-size: 9pt; }
+
+a { color: #634c5c; }
+
+img { border: none; }
+
+p { margin-top: 0; line-height: 1.5; }
+
+table { margin-bottom: 20px; border-bottom: 1px solid #666; border-collapse: collapse; }
+	td { padding: 6px; border-top: 1px solid; }
+
+pre, code { vertical-align: baseline; }
+
+/*-------------------------------------------
+    Elements
+-------------------------------------------*/
+
+#element a[href]:after { content: " (" attr(href) ") "; font-size: 60%; color: #666; display: block; }
+
+
+/*-------------------------------------------
+    Global Combinations
+-------------------------------------------*/
+
+#element { display: none !important; }
+
+#main { border-bottom: 1px solid #666; padding-bottom: 20px; margin-bottom: 25px; }
+
+
+
+
