@@ -27,6 +27,12 @@
  | `:bnext`       maped to F2  | Opens next buffer                                            |
  | `:bprevious`   maped to F3  | Opens previous buffer                                        |
 
+ |                             | TABS                                                         |
+ | :-------------------------  | :----------------------------------------------------------  |
+ | `:sp file <CR> CTRL-w T`    | crée un nouvel onglet avec le fichier file                   |
+ | `Ctrl-PgDn` & `Ctrl-PgUp`   | go to next tab & previous tab                                |
+ | `gt` (`5gt`)                | to switch to next tab (to tab 5)                             |
+
  |                             | RECHERCHE, REMPLACEMENT ET SUPPRESSIONS                      |
  | :-------------------------  | :----------------------------------------------------------  |
  | `*`                         | Recherche pour le mot exact sous le curseur                  |
@@ -143,13 +149,6 @@
  | `[z`                        | move to start of open fold.                                  |
  | `]z`                        | move to end of open fold.                                    |
 
- |                             | TABS                                                         |
- | :-------------------------  | :----------------------------------------------------------  |
- | `:sp file <CR> CTRL-w T`    | crée un nouvel onglet avec le fichier file                   |
- | `Ctrl-PgDn` & `Ctrl-PgUp`   | go to next tab & previous tab                                |
- | `gt` (`5gt`)                | to switch to next tab (to tab 5)                             |
-
-
 [^1]:  Dans le .vimrc `:mkview    " save folds` & `:loadview  " restore folds`
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
 [^3]: The lower case equivalents move focus instead of moving the window.
@@ -160,30 +159,19 @@
 
 #Copier-coller depuis navigateur
 
-Marre d’avoir tout votre texte décalé plein de tabulations quand 
-vous copier-collez à la souris dans vim : here is the solution
-Une commande à taper avant de copier-coller et le tour est joué
-
-    set paste
-
-Prenez soin de taper
-
-    set nopaste
-
-ensuite car l’option paste invalide pas mal de choses. À ne pas mettre dans le vimrc, donc.
-
-*Autre méthode*
-
-Turn off auto-indent when pasting text
-Type in:
-
-    :set pastetoggle=<F3>
-
-Now you can use <F3> to toggle between paste mode (and no paste mode).
-
+avant de copier-coller `set paste`. Ensuite : set nopaste
+*Autre méthode* :set pastetoggle=<F3>
 When in paste-mode auto indent will be turned off. This is very useful when pasting text that's already indented.
-
 More info in http://www.vim.org/tips/tip.php?tip_id=330
+
+
+
+Trier des lignes en fonction de la première colonne:
+:sort
+:sort n (pour du numérique)
+:help :sort
+
+:%!sort -n -k 3
 
 
 #Don't repeat yourself - record your actions
@@ -233,16 +221,6 @@ EDIT : ceci n'est qu'une courte présentation de la fonction record, vous pouvez
 
 Vous pouvez même faire un enregistrement puis l'exécuter récursivement sur tout le fichier...
 ggqqIprintf("<esc>A");<esc>j@@q@@ (Okay, ça servira peut être qu'une fois, mais quand même tongue )
-
-oui c'est pas mal, mais dans ce cas précis, y'a mieux
-
-    :%s/\(^.*$\)/printf("\1");
-
-Ou encore plus simplifié dans ce cas précis:
-
-    :%s/.*/printf("&");
-
-cela dit pour éditer de façon similaire des paragraphes entiers (remise en forme par exemple), les macros, sont pratiques
 
 
 #INTERESSANTS
