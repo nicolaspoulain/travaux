@@ -109,13 +109,13 @@
  | `Shift-v jj`               | selection de lignes entières                   |
  | `Ctrl-v  lljj`             | selection de colonnes                          |
  | `gv`                       | Resélectionne le bloc                          |
- | `h j k l'i , `D`           | En mode visuel : déplace bloc, duplique [^9]   |
+ | `h j k l'i , `D`           | *DRAGVISUAL*:    déplace bloc, duplique        |
 
  |                            | INSERTION SUR PLUSIEURS LIGNES                 |
  | :------------------------- | :--------------------------------------------- |
- | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
  | `Ctrl-v jj $ A STR Esc`    | Insertion à la fin des lignes d'un bloc        |
- | `Ctrl-v jj Shift-i # Esc`  | Commente les lignes d'un bloc                  |
+ | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
+ | `Ctrl-v jj I # Esc`        | Commente les lignes d'un bloc                  |
  | `Shift-v s/^/#`            | Commente les lignes d'un bloc (autre méthode)  |
 
  |                            | INDENTATION, AUTOINDENTATION ET TABULARIZE     |
@@ -159,6 +159,15 @@
  | `q`                        | stopppe enregistrement action [^8]             |
  | `[6]@a`                    | joue 6x enregistrement action (registre a...z) |
 
+ |                            | PLUGINS                                        |
+ | :------------------------- | :--------------------------------------------- |
+ | `,,w`                      | *EASYMOTION*                                   |
+ | `,tt`                      | *TAGBAR*                                       |
+ | `,tt`  `Ctrl-]`            | *TAGBAR*  Déf du mot sous curseur              |
+ | `,u`                       | *UNDOTREE*                                     |
+ | `Ctrl-k`                   | *NEOCOMPLCACHE* autocomplete snippet           |
+
+
 
 [^1]:  Dans le .vimrc `:mkview    " save folds` & `:loadview  " restore folds`
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
@@ -167,5 +176,4 @@
 [^6]: donner le bon le filetype et enclancher le smartindent
 [^7]: More info in http://www.vim.org/tips/tip.php?tip_id=330 *Autre méthode* :set pastetoggle=<F3>
 [^8]: More info in http://www.vim.org/tips/tip.php?tip_id=144
-[^9]: vim-dragvisuals
 [^10]: cf :help :sort
