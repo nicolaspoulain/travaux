@@ -161,12 +161,16 @@
 
  |                            | PLUGINS                                        |
  | :------------------------- | :--------------------------------------------- |
- | `,,w`                      | *EASYMOTION*                                   |
- | `,tt`                      | *TAGBAR*                                       |
- | `,tt`  `Ctrl-]`            | *TAGBAR*  Déf du mot sous curseur              |
- | `,u`                       | *UNDOTREE*                                     |
+ | `<leader><leader>w`        | *EASYMOTION*                                   |
+ | `<leader>tt`               | *TAGBAR*                                       |
+ | `<leader>tt`  `Ctrl-]`     | *TAGBAR*  Déf du mot sous curseur              |
+ | `<leader>u`                | *UNDOTREE*                                     |
  | `Ctrl-k`                   | *NEOCOMPLCACHE* autocomplete snippet           |
-
+ | `<leader>gs`               | *FUGITIVE* :Gstatus `-` un/stage, `p` hunks    |
+ | `<leader>gd`               | *FUGITIVE* :Gdiff                              |
+ | `<leader>gc`               | *FUGITIVE* :Gcommit                            |
+ | `<leader>gl`               | *FUGITIVE* :Glog                               |
+ | `<leader>gp`               | *FUGITIVE* :Git push                           |
 
 
 [^1]:  Dans le .vimrc `:mkview    " save folds` & `:loadview  " restore folds`
