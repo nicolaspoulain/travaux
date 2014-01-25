@@ -171,9 +171,18 @@
  | `<leader>gc`               | *FUGITIVE* :Gcommit                            |
  | `<leader>gl`               | *FUGITIVE* :Glog                               |
  | `<leader>gp`               | *FUGITIVE* :Git push                           |
+ | `Ctrl-e`                   | *NERDTree*                                     |
 
+ |                            | TAGS and *SURROUND*                            |
+ | :------------------------- | :--------------------------------------------- |
+ | `{d,y,v}it`                | deletes, yanks or visual inside tags           |
+ | `cst<h3>`                  | Change le tag en <h3>                          |
+ | `ds"`                      | Supprime le surround ".."                      |
+ | `cs">`                     | Remplace le surround ".." en <..>              |
+ | `cs"<h3>`                  | Remplace le surround ".." en <h3>..</h3>       |
+ | `S<h3>`                    | En visual : surround sélection en <h3>..</h3>  |
 
-[^1]:  Dans le .vimrc `:mkview    " save folds` & `:loadview  " restore folds`
+[^1]:  Dans le .vimrc `:mkview    " save folds` & `:lowercaseadview  " restore folds`
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
 [^3]: The lower case equivalents move focus instead of moving the window.
 [^5]: In a search, `\s` finds whitespace (a space or a tab), and `\+` finds one or more occurrences.
