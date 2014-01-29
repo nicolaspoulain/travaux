@@ -175,8 +175,8 @@
 
  |                            | TAGS and *SURROUND*                            |
  | :------------------------- | :--------------------------------------------- |
- | `{d,y,v}it`                | deletes, yanks or visual inside tags           |
- | `cst<h3>`                  | Change le tag en <h3>                          |
+ | `{d,y,v}it`                | deletes, yanks or visual Inside Tags           |
+ | `cst<h3>`                  | Change Surrounding Tag en <h3>                          |
  | `ds"`                      | Supprime le surround ".."                      |
  | `cs">`                     | Remplace le surround ".." en <..>              |
  | `cs"<h3>`                  | Remplace le surround ".." en <h3>..</h3>       |
@@ -188,5 +188,4 @@
 [^5]: In a search, `\s` finds whitespace (a space or a tab), and `\+` finds one or more occurrences.
 [^6]: donner le bon le filetype et enclancher le smartindent
 [^7]: More info in http://www.vim.org/tips/tip.php?tip_id=330 *Autre méthode* :set pastetoggle=<F3>
-[^8]: More info in http://www.vim.org/tips/tip.php?tip_id=144
-[^10]: cf :help :sort
+
