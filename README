@@ -1,0 +1,1 @@
+pandoc --standalone --smart --toc --data-dir=templates --css=john-full.css GIT.md --output GIT.html

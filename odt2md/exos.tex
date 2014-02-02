@@ -1,0 +1,2798 @@
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.0.2
+% see http://writer2latex.sourceforge.net for more info
+\documentclass[a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[greek,french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage{hyperref}
+\hypersetup{pdftex, colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdftitle=, pdfauthor=, pdfsubject=, pdfkeywords=}
+\usepackage[pdftex]{graphicx}
+\newcommand\textsubscript[1]{\ensuremath{{}_{\text{#1}}}}
+% Text styles
+\newcommand\textstyleVariable[1]{\textit{#1}}
+\makeatletter
+\newcommand\arraybslash{\let\\\@arraycr}
+\makeatother
+% List styles
+\newcounter{saveenum}
+\newcommand\liststyleNumrotationdesexerciceslivrets{%
+\renewcommand\theenumi{\arabic{enumi}}
+\renewcommand\theenumii{\alph{enumii}}
+\renewcommand\labelenumi{ \theenumi }
+\renewcommand\labelenumii{\theenumii.}
+\renewcommand\labelitemi{{\textbullet}}
+\renewcommand\labelitemii{{\textbullet}}
+}
+\newcommand\liststyleLi{%
+\renewcommand\labelitemi{{\textbullet}}
+\renewcommand\labelitemii{{\textbullet}}
+\renewcommand\labelitemiii{{\textbullet}}
+\renewcommand\labelitemiv{{\textbullet}}
+}
+% Page layout (geometry)
+\setlength\voffset{-1in}
+\setlength\hoffset{-1in}
+\setlength\topmargin{2cm}
+\setlength\oddsidemargin{2cm}
+\setlength\textheight{22.902cm}
+\setlength\textwidth{16.999cm}
+\setlength\footskip{1.497cm}
+\setlength\headheight{0.9cm}
+\setlength\headsep{0.4cm}
+% Footnote rule
+\setlength{\skip\footins}{0.119cm}
+\renewcommand\footnoterule{\vspace*{-0.018cm}\setlength\leftskip{0pt}\setlength\rightskip{0pt plus 1fil}\noindent\textcolor{black}{\rule{0.25\columnwidth}{0.018cm}}\vspace*{0.101cm}}
+% Pages styles
+\makeatletter
+\newcommand\ps@pagedegarde{
+  \renewcommand\@oddhead{}
+  \renewcommand\@evenhead{}
+  \renewcommand\@oddfoot{}
+  \renewcommand\@evenfoot{}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieiiiimpaireD{
+  \renewcommand\@oddhead{\sffamily\bfseries\itshape \textsc{Série 3 :} \textsc{Synthèse}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\@evenfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@Standard{
+  \renewcommand\@oddhead{}
+  \renewcommand\@evenhead{}
+  \renewcommand\@oddfoot{}
+  \renewcommand\@evenfoot{}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieiiipaireG{
+  \renewcommand\@oddhead{\sffamily\bfseries\scshape Série 3 : Synthèse}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Racines carrées : Chapitre N3}
+  \renewcommand\@evenfoot{\@oddfoot}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieiimpaireD{
+  \renewcommand\@oddhead{\sffamily\bfseries\itshape \textsc{Série 1 :} \textsc{Définition}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\@evenfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieipaireG{
+  \renewcommand\@oddhead{\sffamily\bfseries\itshape \textsc{Série 1 :} \textsc{Définition}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Racines carrées : Chapitre N3}
+  \renewcommand\@evenfoot{\@oddfoot}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieivpaireG{
+  \renewcommand\@oddhead{\sffamily\bfseries\scshape Série 4 : Équations du type \textstyleVariable{\textup{x}}\textsuperscript{2}\textsf{~}=\textsf{~}\textstyleVariable{\textup{a}}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Racines carrées : Chapitre N3}
+  \renewcommand\@evenfoot{\@oddfoot}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieivimpaireD{
+  \renewcommand\@oddhead{\sffamily\bfseries\scshape Série 4 : ???}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Chapitre ? : ...}
+  \renewcommand\@evenfoot{}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieiiimpaireD{
+  \renewcommand\@oddhead{\sffamily\bfseries\itshape \textsc{Série 2 :} \textsc{Propriétés : applications}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\@evenfoot{\sffamily\bfseries\scshape\color{black} Chapitre N3 : Racines carrées}
+  \renewcommand\thepage{\arabic{page}}
+}
+\newcommand\ps@FichediteursrieiipaireG{
+  \renewcommand\@oddhead{\sffamily\bfseries\itshape \textsc{Série 2 :} \textsc{Propriétés : applications}}
+  \renewcommand\@evenhead{\@oddhead}
+  \renewcommand\@oddfoot{\sffamily\bfseries\scshape\color{black} Racines carrées : Chapitre N3}
+  \renewcommand\@evenfoot{\@oddfoot}
+  \renewcommand\thepage{\arabic{page}}
+}
+\makeatother
+\pagestyle{Standard}
+\setlength\tabcolsep{1mm}
+\renewcommand\arraystretch{1.3}
+\newcommand\normalsubformula[1]{\text{\mathversion{normal}$#1$}}
+\title{}
+\author{}
+\date{2014-01-30}
+\begin{document}
+[Warning: Draw object ignored][Warning: Draw object ignored][Warning:
+Draw object ignored][Warning: Draw object ignored][Warning: Draw object
+ignored][Warning: Draw object ignored][Warning: Draw object
+ignored][Warning: Draw object ignored][Warning: Draw object
+ignored][Warning: Draw object
+ignored]\clearpage\setcounter{page}{1}\pagestyle{pagedegarde}
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+
+\begin{figure}
+\centering
+\begin{minipage}{2.544cm}
+{\sffamily\bfseries\color{black}
+N3}
+\end{minipage}
+\end{figure}
+\begin{figure}
+\centering
+\begin{minipage}{13.079cm}
+{\sffamily\bfseries\itshape
+Série 1 : Définition}
+
+
+\bigskip
+
+{\sffamily\bfseries\itshape
+Série 2 : Propriétés : applications}
+
+
+\bigskip
+
+{\sffamily\bfseries\itshape
+Série 3 : Synthèse}
+
+
+\bigskip
+
+{\sffamily
+\textbf{\textit{Série 4 : Équations du type
+}}\textrm{\textbf{\textit{x}}}\textbf{\textit{\textsuperscript{2}}}\textbf{~}\textrm{\textbf{=}}\textbf{~}\textrm{\textbf{\textit{a}}}}
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+\end{minipage}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=21.001cm,height=29.7cm]{exos-img1.jpg}
+\end{figure}
+\begin{figure}
+\centering
+\begin{minipage}{13.583cm}
+\textsf{\textbf{Racines carrées}}
+\end{minipage}
+\end{figure}
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=13.61cm,height=10.425cm]{exos-img2.jpg}
+\end{figure}
+
+\bigskip
+
+\clearpage\setcounter{page}{1}\pagestyle{FichediteursrieiimpaireD}
+\thispagestyle{FichediteursrieipaireG}
+{\centering\sffamily\bfseries\color{black}
+Le cours avec les aides animées
+\par}
+
+{\sffamily\upshape
+\textbf{Q1.}~Quels nombres possèdent une racine carrée ?}
+
+{\sffamily\upshape
+\textbf{Q2.}~Comment appelle-t-on les nombres positifs dont la racine
+carrée est un nombre entier ?}
+
+{\centering\sffamily\bfseries\color{black}
+Les exercices d{\textquotesingle}application
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\begin{enumerate}
+\item {\sffamily\itshape
+À l{\textquotesingle}aide de la définition}
+
+\begin{enumerate}
+\item {\sffamily
+Quels nombres ont pour carré 81 ? .................... Une racine carrée
+est toujours ........................ donc $\sqrt{81}$
+\textrm{=}~.........~.}
+\item {\sffamily
+Quels nombres ont pour carré 0,25 ? .................}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+ $\sqrt{0,25}$ est un nombre .............. donc ${\sqrt{0,25}}$
+\textrm{=}~.......~.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+(\textrm{$-$}~7)\textsuperscript{2}~\textrm{=}~....... et
+7\textsuperscript{2}~\textrm{=}~..........~.\newline
+ $\sqrt{49}$ ~est l{\textquotesingle}unique nombre
+.......................... dont le ................... est ...........
+donc $\sqrt{49}$ \textrm{=}~.......~. }
+\item {\sffamily
+ $\sqrt{13}$ est l{\textquotesingle}unique
+................................................. qui, élevé au carré,
+vaut ......... donc ${\sqrt{13}}^{\;2}$ \textrm{=}~........~.}
+\end{enumerate}
+\item {\sffamily\itshape
+Existence}
+
+\begin{enumerate}
+\item[] {\sffamily
+Parmi les nombres suivants, entoure ceux qui possèdent une racine
+carrée.}
+\end{enumerate}
+\end{enumerate}
+{\centering\sffamily
+\textrm{$-$}~9 \ ; \ 16 \ ; \ (\textrm{$-$}~5)\textsuperscript{2} \ ;
+\ \textrm{\textgreek{p}}~\textrm{$-$}~3 \ ; \ 5 \ ;
+\ 2\textrm{\textgreek{p}}~\textrm{$-$}~7
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Différentes écritures}
+
+\begin{enumerate}
+\item {\sffamily
+Parmi les nombres suivants, entoure ceux qui sont égaux à $\sqrt{25}.$ }
+\end{enumerate}
+\end{enumerate}
+{\centering\sffamily
+5 \ ; \ \textrm{$-$}~5 \ ; \ 5\textsuperscript{2} \ ; \ 
+$\sqrt{(\text{~}-\text{~}\;5)^{2\;}}$  \ ; \  $\sqrt{5^{\;2}}$  \ ;
+\ 25
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Parmi les nombres suivants, entoure ceux qui sont égaux à 9.}
+\end{enumerate}
+\end{enumerate}
+{\centering\sffamily
+ ${\sqrt{{3}^{2}}}$  \ ; \ 3\textsuperscript{2} \ \ ;
+\ (\textrm{$-$}~3)\textsuperscript{2} \ \textsubscript{\ }; \ 
+${\sqrt{81}}$  \ ; \  $\sqrt{9}$  \ ; \  ${\sqrt{(-\;9)^{2}}}$ 
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Vocabulaire}
+
+\begin{enumerate}
+\item {\sffamily
+Complète les phrases suivantes avec «~le carré~» ou «~la racine
+carrée~».}
+
+\begin{itemize}
+\item {\sffamily
+100 est ..................................................... de 10.}
+\item {\sffamily
+100 est ................................................. de
+100\textsuperscript{2}.}
+\item {\sffamily
+......................................................... de 64 est 8.}
+\item {\sffamily
+......................................................... de 8 est 64.}
+\item {\sffamily
+36 est ...................................... de (\textrm{$-$}~6) et de
+6,}
+\end{itemize}
+\end{enumerate}
+{\sffamily
+\ \ \ \ \ mais ................................................ de 36
+est 6.}
+
+\setcounter{saveenum}{\value{enumii}}
+\begin{enumerate}
+\setcounter{enumii}{\value{saveenum}}
+\item {\sffamily
+Complète le tableau avec les bonnes valeurs.}
+\end{enumerate}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{0.91800004cm}|m{0.91800004cm}|m{0.91800004cm}|m{0.91800004cm}|m{0.91800004cm}|m{0.91800004cm}|m{0.91800004cm}|m{0.922cm}|}
+\hline
+\centering \itshape a &
+\centering \sffamily 9 &
+\centering \sffamily 0,36 &
+~
+ &
+~
+ &
+\centering \sffamily 10\textsuperscript{2} &
+~
+ &
+\centering\arraybslash \sffamily 0,01\\\hline
+\begin{equation*}
+\sqrt{a}
+\end{equation*}
+ &
+~
+ &
+~
+ &
+\centering \sffamily 0,4 &
+\centering \sffamily 8 &
+~
+ &
+\centering \sffamily 10\textsuperscript{2} &
+~
+\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Vous avez dit parfait ?}
+\end{enumerate}
+\begin{multicols}{2}
+{\sffamily\upshape
+ $\sqrt{25}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{81}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{121}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{......}$ \textrm{=}~25}
+
+{\sffamily\upshape
+ $\sqrt{......}$ \textrm{=}~12}
+
+{\sffamily\upshape
+ $\sqrt{......}$ \textrm{=}~10\textsuperscript{3}}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Avec des carrés}
+\end{enumerate}
+\begin{multicols}{2}
+{\sffamily\upshape
+ $\sqrt{{7}^{2}}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ ${\sqrt{17}}^{\;2}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{{(-\;9)}^{2}}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{{10}^{4}}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ ${-\;\sqrt{13}}^{\;2}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\left(-\;\sqrt{4}\;\right)^{\;2}$ \textrm{=}~.......}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+ $-\;\sqrt{{15}^{\;2}}$ \textrm{=}~.......}
+\end{enumerate}
+{\sffamily\upshape
+ $\sqrt{{2}^{6}}$ \textrm{=} $\sqrt{({2}^{...})^{2}}$
+\textrm{=}~.......}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Calcul mental}
+\end{enumerate}
+\begin{multicols}{2}
+{\sffamily\upshape
+ $\sqrt{4}$ \textrm{=}~........}
+
+{\sffamily\upshape
+ $\sqrt{36}$ \textrm{=}~........}
+
+{\sffamily\upshape
+ ${\sqrt{11}}^{\;2}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{(-\;5)^{\;2}}$ \textrm{=}~.........}
+
+{\sffamily\upshape
+ $2\sqrt{9}$ \textrm{=}~........}
+
+{\sffamily\upshape
+ $3\sqrt{16}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $2\;+\;\sqrt{25}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $\sqrt{144}\;-\;6$ \textrm{=}~........}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Ordre de grandeur}
+\end{enumerate}
+{\sffamily\upshape
+Donne l{\textquotesingle}encadrement des nombres suivants à
+l{\textquotesingle}unité sans utiliser de calculatrice. Explique ta
+méthode.}
+
+{\sffamily
+......~\textrm{{\textless}} $\sqrt{43}$ \textrm{{\textless}}~...... car
+.............................................~.}
+
+{\sffamily
+......~\textrm{{\textless}} $\sqrt{56}$ \textrm{{\textless}}~...... car
+.............................................~.}
+
+{\sffamily
+......~\textrm{{\textless}} $\sqrt{135}$ \textrm{{\textless}}~...... car
+...........................................~.
+......~\textrm{{\textless}} $\sqrt{74,8}$ \textrm{{\textless}}~......
+car ..........................................~.}
+
+{\sffamily
+......~\textrm{{\textless}} $\sqrt{163,5}$ \textrm{{\textless}}~......
+car ........................................~.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Arrondi}
+\end{enumerate}
+{\sffamily\upshape
+À l{\textquotesingle}aide de la calculatrice, donne les arrondis
+demandés des nombres suivants.}
+
+{\sffamily\upshape
+ $\sqrt{85}\;+\;3\sqrt{78}$ \textrm{${\approx}$}~.................... au
+centième.\newline
+ $2\sqrt{9,3}\;-\;\sqrt{15}\;\times \;\sqrt{3,4}$
+\textrm{${\approx}$}~................... à ${10}^{-3}.$ }
+
+{\sffamily
+ $\frac{\sqrt{27}\;\times \;\sqrt{0,4}}{12}$
+\textrm{${\approx}$}~................... au millième.}
+
+{\sffamily\upshape
+ $\sqrt{2,5}\;\times \;\sqrt{\frac{15}{8}}$
+\textrm{${\approx}$}~................... à ${10}^{-1}.$ }
+
+{\sffamily\upshape
+ ${\frac{34\;-\;\sqrt{7}}{\sqrt{15}\;+\;2}}$
+\textrm{${\approx}$}~................... à ${10}^{-2}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Un peu de géométrie}
+\end{enumerate}
+{\sffamily\upshape
+Le triangle ABC est tel que AB~\textrm{=} ${\sqrt{23}}$ ; AC~\textrm{=}
+${\sqrt{13}}$  et BC~\textrm{=}~6. Démontre que ABC est rectangle.}
+
+{\sffamily
+..................................................................................................................................................................}
+
+{\sffamily
+D{\textquotesingle}après
+..................................................................., le
+triangle ABC ......................................................~.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Sommes de racines carrées}
+
+\begin{enumerate}
+\item {\sffamily
+ $\sqrt{64}\;+\;\sqrt{36}$
+\textrm{=}~......~\textrm{+}~......~\textrm{=}~.......}
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+\ \  $\sqrt{64\;+\;36}$
+\textrm{=}~.............~\textrm{=}~.............}
+
+{\sffamily
+\ \ donc $\sqrt{64}\;+\;\sqrt{36}$ ~......~ $\sqrt{64\;+\;36}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+ $\sqrt{169}\;-\;\sqrt{25}$
+\textrm{=}~.....~\textrm{$-$}~......~\textrm{=}~......}
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+\ \  $\sqrt{169\;-\;25}$
+\textrm{=}~...........~\textrm{=}~.............}
+
+{\sffamily
+\ \ donc $\sqrt{169}\;-\;\sqrt{25}$ ~......~ $\sqrt{169\;-\;25}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+On en déduit que :}
+
+\begin{itemize}
+\item {\sffamily
+si \textrm{\textit{a}}~\textrm{${\geq}$}~O et
+\textrm{\textit{b}}~\textrm{${\geq}$}~0 alors ${\sqrt{a}\;+\;\sqrt{b}}$
+~......~ ${\sqrt{a\;+\;b}\text{;}}$ }
+\item {\sffamily
+si
+\textrm{\textit{a}}~\textrm{{\textgreater}}~\textrm{\textit{b}}~\textrm{${\geq}$}~0
+alors ${\sqrt{a}\;-\;\sqrt{b}}$ ~......~ ${\sqrt{a\;-\;b}.}$ }
+\end{itemize}
+\end{enumerate}
+\item {\sffamily\itshape
+Avec des multiplications}
+\end{enumerate}
+{\sffamily
+Écris les nombres suivants sans radical.}
+
+{\sffamily\upshape
+ ${\sqrt{49}\;\times \;\sqrt{25}}$
+\textrm{=}~......~\textrm{{\texttimes}}~......~\textrm{=}~......}
+
+{\sffamily\upshape
+ $\sqrt{49\;\times \;25}$ \textrm{=} $\sqrt{(....\;\times
+\;....)^{\;2}}$
+\textrm{=}~......~\textrm{{\texttimes}}~......~\textrm{=}~......}
+
+{\sffamily\upshape
+ $5\sqrt{81}$ \textrm{=}~..................~\textrm{=}~......}
+
+{\sffamily\upshape
+ $-\;8\sqrt{{7}^{2}}$ \textrm{=}~..................~\textrm{=}~......}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Et des quotients}
+\end{enumerate}
+{\sffamily\upshape
+Écris les nombres suivants sans radical.}
+
+\begin{multicols}{2}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+ $\sqrt{\frac{36}{25}}$ \textrm{=}
+$\sqrt{\left(\frac{....}{....}\right)^{2}}$ \textrm{=}~.........}
+\end{enumerate}
+{\sffamily
+ $\frac{\sqrt{36}}{\sqrt{25}}$ \textrm{=}~..........}
+
+{\sffamily
+ $\frac{-\;\sqrt{144}}{3}$ \textrm{=}~..........~\textrm{=}~........}
+
+{\sffamily\upshape
+ $\sqrt{\frac{121}{49}}$ \textrm{=}~.........................}
+
+{\sffamily
+ $\frac{50}{2\sqrt{25}}$ \textrm{=} $\frac{.....}{.....}$
+\textrm{=}~........}
+
+{\sffamily
+ $\frac{-\;3\sqrt{16^{2}}}{4\sqrt{(-\;3)^{2}}}$ \textrm{=}
+$\frac{.........}{.........}$ \textrm{=}~.......}
+
+{\sffamily\upshape
+ $6\sqrt{\left(\frac{5}{6}\right)^{2}}$
+\textrm{=}~.......................}
+
+{\sffamily\upshape
+ $\sqrt{\frac{7\;\times \;21}{3}}$ \textrm{=}~.....................}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Au carré}
+
+{\sffamily
+Complète :
+(\textrm{\textit{a}}~\textrm{{\texttimes}}~\textrm{\textit{b}})\textsuperscript{2}~\textrm{=}~..........~\textrm{{\texttimes}}~..........}
+
+{\sffamily
+Calcule les nombres suivants.}
+\end{enumerate}
+{\sffamily\upshape
+ $(2\sqrt{13})^{2}$
+\textrm{=}~......\textsuperscript{2}~\textrm{{\texttimes}}~......\textsuperscript{2}~\textrm{=}~......~\textrm{{\texttimes}}~......~\textrm{=}~.......}
+
+{\sffamily\upshape
+ $(8\sqrt{11})^{2}$
+\textrm{=}~....................~\textrm{=}~...............~\textrm{=}~.......}
+
+{\sffamily\upshape
+ $(-\;4\sqrt{7})^{2}$
+\textrm{=}~..................~\textrm{=}~...............~\textrm{=}~........}
+
+{\sffamily
+ $\left(\frac{7\sqrt{8}}{4}\right)^{2}$
+\textrm{=}~.................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Des trous}
+\end{enumerate}
+{\sffamily\upshape
+Complète les égalités suivantes.}
+
+\begin{multicols}{2}
+{\sffamily\upshape
+ $\sqrt{24\;+\;....}$ \textrm{=}~7}
+
+{\sffamily\upshape
+ $\sqrt{144\;+\;....}$ \textrm{=}~15}
+
+{\sffamily\upshape
+ $\sqrt{236\;+\;......}$ \textrm{=}~20}
+
+{\sffamily\upshape
+ $\sqrt{2\;\times \;....}$ \textrm{=}~10}
+
+{\sffamily\upshape
+ $\sqrt{6\;\times \;....}$ \textrm{=}~12}
+
+{\sffamily\upshape
+ $\sqrt{8\;\times \;....}$ \textrm{=}~16}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Une variable}
+\end{enumerate}
+{\sffamily\upshape
+Soit E~\textrm{=}~3\textrm{\textit{x}}\textsuperscript{2}~\textrm{+}~9.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule E pour \textrm{\textit{x}}~\textrm{=} $\sqrt{2}.$ }
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+On fait apparaître les signes \textrm{{\texttimes}} sous-entendus dans
+l{\textquotesingle}expression :
+E~\textrm{=}~3~\textrm{{\texttimes}}~\textrm{\textit{x}}\textsuperscript{2}~\textrm{+}~9.}
+
+{\sffamily\upshape
+On remplace \textrm{\textit{x }}par $\sqrt{2}$ dans E.}
+
+{\sffamily\upshape
+E~\textrm{=}~3~\textrm{{\texttimes}}~(......)\textsuperscript{2}~\textrm{+}~9~\textrm{=}~3~\textrm{{\texttimes}}~......~\textrm{+}~9~\textrm{=}~........}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule E pour \textrm{\textit{x}}~\textrm{=} $\sqrt{3}.$ }
+
+{\sffamily
+...................................................................................................................................................................................................................................................}
+\item {\sffamily
+Calcule E pour \textrm{\textit{x}}~\textrm{=} $-\;\sqrt{3}.$ }
+
+{\sffamily
+...................................................................................................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Avec deux variables}
+
+{\sffamily
+Soit
+F~\textrm{=}~5\textrm{\textit{a}}\textsuperscript{2}~\textrm{$-$}~7\textrm{\textit{b}}\textsuperscript{2}.
+}
+
+\begin{enumerate}
+\item {\sffamily
+Calcule F pour \textrm{\textit{a}}~\textrm{=} $\sqrt{7}$ et
+\textrm{\textit{b}}~\textrm{=} $\sqrt{5}.$ }
+
+{\sffamily
+F~\textrm{=}~5~\textrm{{\texttimes}}~(.......)\textsuperscript{2}~\textrm{$-$}~7~\textrm{{\texttimes}}~(.......)\textsuperscript{2}}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+F~\textrm{=}~........................................}
+
+{\sffamily\upshape
+F~\textrm{=}~........................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule F pour \textrm{\textit{a}}~\textrm{=} $\sqrt{5}$ et
+\textrm{\textit{b}}~\textrm{=} $\sqrt{7}.$ }
+
+{\sffamily
+.................................................................................................................................................................}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+................................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule F pour \textrm{\textit{a}}~\textrm{=} $-\;\sqrt{3}$ et
+\textrm{\textit{b}}~\textrm{=} $-\;\sqrt{2}.$ }
+
+{\sffamily
+...................................................................................................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Double racine}
+
+{\sffamily
+Écris les nombres suivants le plus simplement possible.}
+\end{enumerate}
+{\sffamily\upshape
+ $\sqrt{\sqrt{81}}$
+\textrm{=}~....................................................................}
+
+{\sffamily\upshape
+ $\sqrt{\sqrt{10^{4}}}$
+\textrm{=}~...................................................................}
+
+{\sffamily\upshape
+ $\sqrt{\sqrt{25^{2}}}$
+\textrm{=}~...................................................................}
+
+{\sffamily\upshape
+ $\left(\sqrt{3\;+\;\sqrt{5}}\;\right)^{2}$
+\textrm{=}~............................................................}
+
+{\sffamily\upshape
+ $\left(\sqrt{6\;+\;7\sqrt{2}}\;\right)^{2}$
+\textrm{=}~..........................................................}
+
+\clearpage\setcounter{page}{1}\pagestyle{FichediteursrieiiimpaireD}
+\thispagestyle{FichediteursrieiipaireG}
+{\centering\sffamily\bfseries\color{black}
+Le cours avec les aides animées
+\par}
+
+{\sffamily\upshape
+\textbf{Q1.}~La racine carrée du produit de deux nombres positifs
+est-elle égale au produit des racines carrées de ces deux nombres ?
+Justifie.}
+
+{\sffamily\upshape
+\textbf{Q2.}~La racine carrée du quotient de deux nombres positifs
+est-elle égale au quotient des racines carrées de ces deux nombres ?
+Justifie.}
+
+{\sffamily\upshape
+\textbf{Q3.}~La racine carrée d{\textquotesingle}une somme de deux
+nombres positifs est-elle égale à la somme des racines carrées de ces
+deux nombres ? Justifie.}
+
+{\centering\sffamily\bfseries\color{black}
+Les exercices d{\textquotesingle}application
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\begin{enumerate}
+\item {\sffamily\itshape
+Produit de deux racines}
+
+\begin{enumerate}
+\item {\sffamily
+ $\sqrt{169}$ \textrm{{\texttimes}} $\sqrt{81}$
+\textrm{=}~........~\textrm{{\texttimes}}~.........~\textrm{=}~..........}
+
+{\sffamily
+\ \ \ \ \  $\sqrt{169\;\times \;81}$
+\textrm{=}~........................~\textrm{=}~..........}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+\ \ \ \ \ donc $\sqrt{169}$ \textrm{{\texttimes}} $\sqrt{81}$
+~.........~ $\sqrt{169\;\times \;81}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+ $\sqrt{0,16}$ \textrm{{\texttimes}} $\sqrt{900}$
+\textrm{=}~..........~\textrm{{\texttimes}}~.........~\textrm{=}~..........}
+
+{\sffamily
+\ \ \ \ \  $\sqrt{0,16\;\times \;900}$
+\textrm{=}~........................~\textrm{=}~..........}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+\ \ \ \ \ donc $\sqrt{0,16}$ \textrm{{\texttimes}} $\sqrt{900}$
+~.........~ $\sqrt{0,16\;\times \;900}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+\textrm{\textit{a}} et \textrm{\textit{b}} étant deux nombres positifs,}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+ ${\left(\sqrt{a}\;\times \;\sqrt{b}\right)^{2}}$
+\textrm{=}~(.......)\textsuperscript{2}~\textrm{{\texttimes}}~(.......)\textsuperscript{2}~\textrm{=}~...............}
+
+{\sffamily\upshape
+ $\left(\sqrt{\normalsubformula{{a}}\;\times \;b}\right)^{2}$
+\textrm{=}~............... }
+
+{\sffamily\upshape
+donc ${\left(\sqrt{a}\;\times \;\sqrt{b}\right)^{2}}$ ~........~
+$\left(\sqrt{\normalsubformula{{a}}\;\times \;b}\right)^{2}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+ ${\sqrt{a}\;\times \;\sqrt{b}}$ et
+$\sqrt{\normalsubformula{{a}}\;\times \;b}$ ont le même
+................... et sont .......................... donc
+${\sqrt{a}\;\times \;\sqrt{b}}$ ~........~
+$\sqrt{\normalsubformula{{a}}\;\times \;b}.$ }
+\item {\sffamily\itshape
+Décomposons avec des carrés parfaits}
+
+{\sffamily
+Écris les nombres sous la forme ${a\sqrt{b}}$ où \textrm{\textit{b}} est
+un entier positif le plus petit possible.}
+\end{enumerate}
+{\sffamily
+ $\sqrt{50}$ \textrm{=} $\sqrt{.....\;\times \;2}$ \textrm{=}
+$\sqrt{.....^{2}\;\times \;2}$ \textrm{=} $\sqrt{......^{2}}\;\times
+\;\sqrt{2}$ \textrm{=}~..... $\sqrt{2}$ }
+
+{\sffamily
+ $\sqrt{48}$ \textrm{=} $\sqrt{.....\;\times \;3}$ \textrm{=}
+$\sqrt{.....^{2}\;\times \;....}$ \textrm{=} $\sqrt{....^{2}}\;\times
+\;\sqrt{...}$ \textrm{=}~..... $\sqrt{...}$ }
+
+{\sffamily
+ $2\sqrt{80}$ \textrm{=} $2\sqrt{....\;\times \;....}$ \textrm{=}
+$2\sqrt{......^{2}\;\times \;.....}$ \newline
+ \ \ \ \ \ \ \ \ \ \textrm{=} $2\sqrt{....^{2}}\;\times \;\sqrt{....}$
+\textrm{=}~2~\textrm{{\texttimes}}~...... $\sqrt{.....}$
+\textrm{=}~...... $\sqrt{.....}$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+À toi de jouer}
+
+{\sffamily
+Écris les nombres sous la forme ${a\sqrt{b}}$ où \textrm{\textit{b}} est
+un entier positif le plus petit possible.}
+
+\begin{enumerate}
+\item \begin{itemize}
+\item {\sffamily
+ $\sqrt{12}$
+\textrm{=}~..............................................................}
+\item {\sffamily
+ $\sqrt{98}$
+\textrm{=}~..............................................................}
+\item {\sffamily
+ $\sqrt{150}$
+\textrm{=}~............................................................}
+\item {\sffamily
+ $\sqrt{108}$
+\textrm{=}~............................................................}
+\item {\sffamily
+ $5\sqrt{96}$
+\textrm{=}~...........................................................}
+\item {\sffamily
+ $2\sqrt{300}$
+\textrm{=}~.........................................................}
+\end{itemize}
+\end{enumerate}
+\item {\sffamily\itshape
+Avec un radical}
+
+{\sffamily
+Écris sous la forme $\sqrt{a}$ où \textrm{\textit{a}}\textstyleVariable{
+}est un nombre entier positif.}
+\end{enumerate}
+{\sffamily\upshape
+ $3\sqrt{2}$
+\textrm{=}~......................................................................}
+
+{\sffamily\upshape
+ $50\sqrt{0,5}$
+\textrm{=}~.................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Calculs (1)}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{0.88500005cm}|m{0.994cm}|m{1.074cm}|m{0.818cm}|m{0.73800004cm}|m{1.686cm}|m{1.347cm}|}
+\hline
+\centering \itshape a &
+\centering \itshape b &
+\centering \sffamily
+\textrm{\textit{a}}~\textrm{{\texttimes}}~\textrm{\textit{b}} &
+\begin{equation*}
+\sqrt{a}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{b}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{a}\;\times \;\sqrt{b}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{a\;\times \;b}
+\end{equation*}
+\\\hline
+\centering \sffamily 16 &
+\centering \sffamily 81 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+~
+\\\hline
+~
+ &
+\centering \sffamily 36 &
+\centering \sffamily 1 764 &
+~
+ &
+~
+ &
+~
+ &
+~
+\\\hline
+\centering \sffamily 0,25 &
+~
+ &
+~
+ &
+~
+ &
+\centering \sffamily 3 &
+~
+ &
+~
+\\\hline
+~
+ &
+\centering \sffamily 49 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+\centering\arraybslash \sffamily 35\\\hline
+~
+ &
+~
+ &
+\centering \sffamily 2,25 &
+~
+ &
+\centering \sffamily 15 &
+~
+ &
+~
+\\\hline
+\centering \sffamily 100 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+\centering \sffamily 80 &
+~
+\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Quotient de deux racines carrées}
+
+\begin{enumerate}
+\item {\sffamily
+ $\frac{\sqrt{64}}{\sqrt{4}}$ \textrm{=} $\frac{......}{......}$
+\textrm{=}~\textrm{.}....... \ et \  $\sqrt{\frac{64}{4}}$ \textrm{=}
+$\sqrt{......}$ \textrm{=}~........\newline
+ \ \ \ \ \ donc \  $\frac{\sqrt{64}}{\sqrt{4}}$ ~.......~
+$\sqrt{\frac{64}{4}}.$ }
+\item {\sffamily
+ $\frac{\sqrt{0,81}}{\sqrt{0,09}}$ \textrm{=} $\frac{......}{......}$
+\textrm{=}~\textrm{.}...... \ et \  $\sqrt{\frac{0,81}{0,09}}$
+\textrm{=} $\sqrt{.....}$ \textrm{=}~.......\newline
+ \ \ \ \ \ donc \  $\frac{\sqrt{0,81}}{\sqrt{0,09}}$ ~.......~
+$\sqrt{\frac{0,81}{0,09}}.$ }
+\item {\sffamily
+\textrm{\textit{a}} et \textrm{\textit{b}} sont deux nombres positifs,
+\textrm{\textit{b~}}\textrm{${\neq}$}~0.}
+
+{\sffamily
+ $\left(\frac{\sqrt{a}}{\sqrt{b}}\right)^{2}$ \textrm{=}
+$\frac{{(......)^{2}}}{(......)^{2}}$ \textrm{=}~.........\textrm{
+\ }et \  $\left(\sqrt{\frac{a}{b}}\right)^{2}$
+\textrm{=}~\textrm{.}........~.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+ $\frac{\sqrt{a}}{\sqrt{b}}$ et $\sqrt{\frac{a}{b}}$ ont le même
+............................. et sont .......................... donc
+$\frac{\sqrt{a}}{\sqrt{b}}$ ~........~ $\sqrt{\frac{a}{b}}.$ }
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Calculs (2)}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{1.0769999cm}|m{1.0769999cm}|m{1.0769999cm}|m{1.0769999cm}|m{1.0769999cm}|m{1.0769999cm}|m{1.0879999cm}|}
+\hline
+\centering \itshape a &
+\centering \itshape b &
+\begin{equation*}
+\frac{a}{b}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{a}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{b}
+\end{equation*}
+ &
+\begin{equation*}
+\frac{\sqrt{a}}{\sqrt{b}}
+\end{equation*}
+ &
+\begin{equation*}
+\sqrt{{\frac{a}{b}}}
+\end{equation*}
+\\\hline
+\centering \sffamily 1 &
+\centering \sffamily 9 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+~
+\\\hline
+\centering \sffamily 121 &
+~
+ &
+\begin{equation*}
+\frac{121}{81}
+\end{equation*}
+ &
+~
+ &
+~
+ &
+~
+ &
+~
+\\\hline
+~
+ &
+\centering \sffamily 144 &
+~
+ &
+\centering \sffamily 7 &
+~
+ &
+~
+ &
+~
+\\\hline
+\centering \sffamily 49 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+\centering \sffamily 0,7 &
+~
+\\\hline
+~
+ &
+\centering \sffamily 64 &
+~
+ &
+~
+ &
+~
+ &
+~
+ &
+\begin{equation*}
+\frac{5}{8}
+\end{equation*}
+\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Simplification de l{\textquotesingle}écriture de racines carrées}
+
+\begin{enumerate}
+\item[] {\sffamily
+Écris sous la forme ${a\sqrt{b}}$ , où \textrm{\textit{a}} est un entier
+et \textrm{\textit{b}} un entier positif, le plus petit possible. }
+
+\begin{itemize}
+\item {\sffamily
+ $3\sqrt{12}$
+\textrm{=}~...........................................................}
+\item {\sffamily
+ $\sqrt{5}\;\times \;\sqrt{15}$
+\textrm{=}~......................................................}
+\item {\sffamily
+ $\sqrt{12}\;\times \;\sqrt{30}$
+\textrm{=}~....................................................}
+\item {\sffamily
+ $5\sqrt{14}\;\times \;\sqrt{2}$
+\textrm{=}~...................................................}
+\item {\sffamily
+ $2\sqrt{63}\;\times \;3\sqrt{21}$
+\textrm{=}~...............................................}
+\item {\sffamily
+ $\sqrt{7}\;\times \;\sqrt{28}\;\times \;\sqrt{63}$
+\textrm{=}~............................................}
+\item {\sffamily
+ $\frac{\sqrt{360}}{\sqrt{2}\;\times \;\sqrt{10}}$
+\textrm{=}~.....................................................}
+\item {\sffamily
+ $\frac{2\sqrt{50}\;\times \;\sqrt{20}}{5\sqrt{2}}$
+\textrm{=}~.................................................\newline
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textrm{=}~.................................................}
+\end{itemize}
+\end{enumerate}
+\item {\sffamily\itshape
+Racines carrées et inverses}
+
+\begin{enumerate}
+\item {\sffamily
+Quand dit-on de deux nombres qu{\textquotesingle}ils sont inverses
+l{\textquotesingle}un de l{\textquotesingle}autre ?}
+\end{enumerate}
+{\sffamily
+.................................................................................}
+
+\setcounter{saveenum}{\value{enumii}}
+\begin{enumerate}
+\setcounter{enumii}{\value{saveenum}}
+\item {\sffamily
+Vérifie que les nombres suivants sont inverses.}
+
+\begin{itemize}
+\item {\sffamily
+ $\sqrt{2}$ et $\sqrt{\frac{1}{2}}$ }
+\end{itemize}
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+
+\begin{itemize}
+\item {\sffamily
+ $\sqrt{2}$ et $\frac{\sqrt{2}}{2}$ }
+\end{itemize}
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+\item {\sffamily
+Quel est l{\textquotesingle}inverse de $\frac{\sqrt{3}}{7}$ ? Justifie
+ta réponse.}
+
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Quotient de deux racines carrées}
+
+\begin{enumerate}
+\item {\sffamily
+Écris le nombre sans radical au dénominateur.}
+
+{\sffamily
+ $\frac{\sqrt{2}}{\sqrt{3}}$ \textrm{=} $\frac{\sqrt{2}\;\times \;\ldots
+\ldots }{\sqrt{3}\;\times \;\sqrt{3}}$ \textrm{=} $\frac{\ldots \ldots
+}{\ldots \ldots }$ }
+\item {\sffamily
+En t{\textquotesingle}aidant de la question ci-dessus, écris les nombres
+suivants sans radical au dénominateur.}
+
+\begin{itemize}
+\item {\sffamily
+ $\frac{2}{3\sqrt{6}}$
+\textrm{=}~.............................................................}
+\item {\sffamily
+ $\frac{1}{\sqrt{5}}$
+\textrm{=}~...............................................................}
+\item {\sffamily
+ $\frac{\sqrt{8}}{\sqrt{2}}$
+\textrm{=}~...............................................................}
+\end{itemize}
+\end{enumerate}
+\item {\sffamily\itshape
+Des produits et des quotients}
+
+\begin{enumerate}
+\item[] {\sffamily
+Écris sous la forme d{\textquotesingle}un quotient dont le dénominateur
+est un entier.}
+
+\begin{itemize}
+\item {\sffamily
+ $\sqrt{\frac{2}{3}}\;\times \;\sqrt{\frac{3}{5}}$
+\textrm{=}~.......................................................}
+\item {\sffamily
+ $\sqrt{\frac{3}{8}}\;\times \;\sqrt{\frac{72}{11}}$
+\textrm{=}~.....................................................}
+\item {\sffamily
+ $\sqrt{\frac{7}{50}}\;\times \;\frac{\sqrt{40}}{\sqrt{35}}$
+\textrm{=}~...................................................}
+\item {\sffamily
+ $\frac{\sqrt{32}}{\sqrt{50}}\;\times \;\frac{\sqrt{45}}{\sqrt{24}}$
+\textrm{=}~...................................................}
+\end{itemize}
+\end{enumerate}
+\item {\sffamily\itshape
+Des trous}
+
+{\sffamily
+Complète les égalités suivantes avec des entiers. Tu peux utiliser
+l{\textquotesingle}espace libre pour tes calculs.}
+
+\begin{equation*}
+\sqrt{\frac{2}{5}}\;=\;\frac{.....}{\sqrt{10}}
+\end{equation*}
+\begin{equation*}
+\sqrt{\frac{7}{3}}\;=\;\frac{7}{\sqrt{.....}}
+\end{equation*}
+\begin{equation*}
+\frac{2\sqrt{5}}{3}\;=\;\sqrt{\frac{.....}{.....}}
+\end{equation*}
+\begin{equation*}
+\frac{\sqrt{8}}{6}\;=\;\frac{\sqrt{2}}{.....}
+\end{equation*}
+\begin{equation*}
+\frac{\sqrt{24}}{6}\;=\;\frac{2}{\sqrt{.....}}
+\end{equation*}
+\begin{equation*}
+\frac{3\sqrt{7}}{\sqrt{14}}\;=\;\frac{\sqrt{.....}}{2}
+\end{equation*}
+\item {\sffamily\itshape
+Proportionnalité}
+
+\begin{enumerate}
+\item {\sffamily
+Le tableau suivant est-il un tableau de proportionnalité ? Justifie.}
+\end{enumerate}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\begin{equation*}
+\sqrt{12}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+\sqrt{20}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+3\sqrt{2}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+5\sqrt{6}
+\end{equation*}
+}\\\hline
+\multicolumn{1}{|c|}{\begin{equation*}
+\sqrt{30}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+5\sqrt{2}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+\sqrt{45}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+5\sqrt{15}
+\end{equation*}
+}\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item[] {\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+
+{\sffamily
+.................................................................................}
+\item {\sffamily
+Complète le tableau de proportionnalité suivant.}
+\end{enumerate}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\begin{equation*}
+\sqrt{12}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+\sqrt{26}
+\end{equation*}
+} & \multicolumn{1}{c|}{\begin{equation*}
+3\sqrt{6}
+\end{equation*}
+} & \multicolumn{1}{c|}{~
+}\\\hline
+\multicolumn{1}{|c|}{\begin{equation*}
+\sqrt{18}
+\end{equation*}
+} & \multicolumn{1}{c|}{~
+} & \multicolumn{1}{c|}{~
+} & \multicolumn{1}{c|}{\begin{equation*}
+5\sqrt{3}
+\end{equation*}
+}\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Thalès (1)}
+
+{\sffamily
+[Warning: Draw object ignored]Calcule la valeur exacte de la longueur de
+[AC] sachant que BA~\textrm{=} $\sqrt{5}$  et AN~\textrm{=} $\sqrt{3}.$
+}
+
+{\sffamily
+.....................................................................................................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily\itshape
+En géométrie}
+
+{\sffamily
+[Warning: Draw object ignored]ABCD est un carré de côté 3~cm. \newline
+E~\textrm{${\in}$}~[BD], F~\textrm{${\in}$}~[BC] ; \newline
+(EF)~//~(DC), (EF) coupe (BH) en G.}
+
+\begin{enumerate}
+\item {\sffamily
+Calcule la valeur exacte de BD.}
+
+{\sffamily
+....................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily
+Calcule la valeur exacte de BH.}
+
+{\sffamily
+....................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily
+Sachant que BE~\textrm{=}~2~cm, calcule BF et BG.}
+
+{\sffamily
+.......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................}
+
+{\sffamily
+..................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Nombres égaux}
+\end{enumerate}
+{\sffamily\upshape
+Relie les nombres égaux.}
+
+\begin{table}
+\centering
+\begin{tabular}{|m{2.733cm}|m{0.37700003cm}|m{1.795cm}|m{0.38cm}|m{2.7159998cm}|}
+
+\hhline{--~--}
+\begin{equation*}
+\sqrt{144}\;-\;\sqrt{81}
+\end{equation*}
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+~
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+\begin{equation*}
+\sqrt{63}
+\end{equation*}
+\\\hhline{--~--}
+\begin{equation*}
+\frac{\sqrt{6}\;\times \;\sqrt{10}}{2}
+\end{equation*}
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+~
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+\centering\arraybslash \sffamily 3\\\hhline{--~--}
+\begin{equation*}
+3\sqrt{7}
+\end{equation*}
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+~
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+\begin{equation*}
+\sqrt{30}
+\end{equation*}
+\\\hhline{--~--}
+\begin{equation*}
+3\sqrt{\frac{10}{3}}
+\end{equation*}
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+~
+ &
+\liststyleLi
+\begin{itemize}
+\item[] \centering \sffamily {\textbullet}\end{itemize}
+ &
+\begin{equation*}
+\sqrt{15}
+\end{equation*}
+\\\hhline{--~--}
+\end{tabular}
+\end{table}
+\liststyleNumrotationdesexerciceslivrets
+\begin{enumerate}
+\item {\sffamily\itshape
+Étoile magique}
+\end{enumerate}
+{\sffamily
+Complète l{\textquotesingle}étoile de telle sorte que le produit des
+nombres de chaque alignement soit le même.}
+
+[Warning: Draw object ignored]
+
+\begin{equation*}
+\sqrt{45}
+\end{equation*}
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+\begin{equation*}
+\sqrt{20}
+\end{equation*}
+
+\bigskip
+
+
+\bigskip
+
+ $\sqrt{8}$  $3\sqrt{5}$  $2\sqrt{5}$ 
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+
+\bigskip
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Thalès (2)}
+
+{\sffamily
+Les droites (AB) et (CD) sont-elles parallèles ?}
+\end{enumerate}
+[Warning: Draw object ignored]
+
+\begin{equation*}
+\sqrt{126}
+\end{equation*}
+\begin{equation*}
+\sqrt{35}
+\end{equation*}
+
+\bigskip
+
+
+\bigskip
+
+ $\sqrt{98}$  $3\sqrt{5}$ 
+
+
+\bigskip
+
+
+\bigskip
+
+{\sffamily
+.....................................................................................................................................................................................................................................................................................................................................................................................................................}
+
+\clearpage\setcounter{page}{1}\pagestyle{FichediteursrieiiipaireG}
+\thispagestyle{FichediteursrieiiiimpaireD}
+{\centering\sffamily\bfseries\color{black}
+Le cours avec les aides animées
+\par}
+
+{\sffamily\upshape
+\textbf{Q1.}~Énonce les règles qui permettent de simplifier des calculs
+avec des racines carrées.}
+
+{\sffamily\upshape
+\textbf{Q2.}~Énonce cinq méthodes de développement d{\textquotesingle}un
+produit de facteurs.}
+
+{\centering\sffamily\bfseries\color{black}
+Les exercices d{\textquotesingle}application
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\begin{enumerate}
+\item {\sffamily\itshape
+L{\textquotesingle}addition s{\textquotesingle}il vous plaît}
+\end{enumerate}
+{\sffamily\upshape
+A~\textrm{=} $5\sqrt{7}\;+\;3\sqrt{7}\;-\;2\sqrt{7}$ }
+
+{\sffamily\upshape
+A~\textrm{=}~(......~\textrm{+}~......~\textrm{$-$}~......) $\sqrt{7}$ }
+
+{\sffamily\upshape
+A~\textrm{=} $......\sqrt{7}$ \newline
+}
+
+{\sffamily\upshape
+B~\textrm{=} $4\sqrt{3}\;-\;9\sqrt{3}\;+\;\sqrt{3}$ }
+
+{\sffamily\upshape
+B~\textrm{=}~(....................) $\sqrt{3}$ }
+
+{\sffamily\upshape
+B~\textrm{=}~...........}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+En somme, c{\textquotesingle}est simple}
+
+{\sffamily
+C~\textrm{=} $\sqrt{18}\;-\;\sqrt{50}\;+\;6\sqrt{2}$ }
+\end{enumerate}
+{\sffamily\upshape
+C~\textrm{=} $\sqrt{......\;\times \;2}\;-\;\sqrt{......\;\times
+\;2}\;+\;6\sqrt{2}$ }
+
+{\sffamily\upshape
+C~\textrm{=} $\sqrt{{......}^{2}}\;\times
+\;\sqrt{2}\;-\;\sqrt{{......}^{2}}\;\times \;\sqrt{2}\;+\;6\sqrt{2}$ }
+
+{\sffamily\upshape
+C~\textrm{=} $....\sqrt{2}\;-\;....\sqrt{2}\;+\;....\sqrt{2}$ }
+
+{\sffamily\upshape
+C~\textrm{=}~(......~\textrm{$-$}~......~\textrm{+}~......) $\sqrt{2}$
+\textrm{=}~...........\newline
+}
+
+{\sffamily\upshape
+D~\textrm{=} $8\sqrt{5}\;-\;\sqrt{500}\;+\;4\sqrt{45}$ }
+
+{\sffamily\upshape
+D~\textrm{=} $........\;-\;\sqrt{......\;\times
+\;5}\;+\;4\sqrt{......\;\times \;5}$ }
+
+{\sffamily\upshape
+D~\textrm{=}~.........~\textrm{$-$}~.............~\textrm{+}~.....................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+D~\textrm{=}~(.......~\textrm{$-$}~.......~\textrm{+}~.......)........~\textrm{=}~...........}
+\item {\sffamily\itshape
+Simplification de sommes}
+
+\begin{enumerate}
+\item {\sffamily
+Écris la somme suivante sous la forme $a\sqrt{3}$ où \textrm{\textit{a}}
+est un entier relatif.}
+
+{\sffamily
+E~\textrm{=} $\sqrt{27}\;+\;2\sqrt{75}$ }
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+\item {\sffamily
+Écris la somme suivante sous la forme $a\sqrt{5}$ où \textrm{\textit{a}}
+est un entier relatif.}
+\end{enumerate}
+{\sffamily
+F~\textrm{=} $2\sqrt{500}\;-\;5\sqrt{125}\;-\;3\sqrt{180}$ }
+
+{\sffamily
+F~\textrm{=}~...........................................................................}
+
+{\sffamily
+F~\textrm{=}~...........................................................................}
+
+{\sffamily
+F~\textrm{=}~...........................................................................}
+
+{\sffamily
+F~\textrm{=}~...........................................................................F~\textrm{=}~...........................................................................}
+\item {\sffamily\itshape
+Pour devenir une bête de somme}
+
+\begin{enumerate}
+\item[] {\sffamily
+Écris les sommes suivantes sous la forme $a\sqrt{b}$ où
+\textrm{\textit{a}} est un entier relatif et \textrm{\textit{b}} le
+plus petit entier possible.}
+
+{\sffamily
+G~\textrm{=} $\sqrt{147}\;+\;3\sqrt{48}\;-\;5\sqrt{12}\;-\;\sqrt{48}$ }
+\end{enumerate}
+{\sffamily
+G~\textrm{=}~..........................................................................}
+
+{\sffamily
+G~\textrm{=}~..........................................................................}
+
+{\sffamily
+G~\textrm{=}~..........................................................................G~\textrm{=}~..........................................................................}
+
+\begin{enumerate}
+\item[] 
+\bigskip
+
+{\sffamily
+H~\textrm{=} $-\;5\sqrt{28}\;+\;2\sqrt{63}\;+\;\sqrt{567}$ }
+
+{\sffamily
+H~\textrm{=}~..........................................................................}
+\end{enumerate}
+{\sffamily
+H~\textrm{=}~..........................................................................}
+
+{\sffamily
+H~\textrm{=}~..........................................................................}
+\item {\sffamily\itshape
+Distributivité simple}
+\end{enumerate}
+{\sffamily\upshape
+Développe puis simplifie les expressions.}
+
+\begin{multicols}{2}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+I~\textrm{=} $3\left(5\;-\;\sqrt{7}\right)$ }
+
+{\sffamily
+I~\textrm{=}~..................................}
+
+{\sffamily
+I~\textrm{=}~..................................}
+
+{\sffamily
+J~\textrm{=} $\sqrt{5}\;\left(2\;+\;\sqrt{5}\right)$  }
+
+{\sffamily
+J~\textrm{=}~..................................}
+
+{\sffamily
+J~\textrm{=}~..................................}
+\end{enumerate}
+\end{multicols}
+\begin{multicols}{2}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Double distributivité}
+
+{\sffamily
+Développe puis simplifie les expressions.}
+\end{enumerate}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+M~\textrm{=} $\left(3\;+\;\sqrt{2}\right)\left(5\;-\;\sqrt{2}\right)$ }
+
+{\sffamily
+M~\textrm{=}~...............................}
+
+{\sffamily
+M~\textrm{=}~...............................}
+
+{\sffamily
+M~\textrm{=}~...............................}
+
+{\sffamily
+N~\textrm{=} $\left(3\sqrt{5}\;-\;2\right)\left(1\;-\;\sqrt{5}\right)$ }
+
+{\sffamily
+N~\textrm{=}~................................}
+
+{\sffamily
+N~\textrm{=}~................................}
+
+{\sffamily
+N~\textrm{=}~................................}
+\end{enumerate}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+P~\textrm{=}
+$\left(-\;2\sqrt{6}\;+\;4\right)\left(\sqrt{3}\;+\;\sqrt{2}\right)$ }
+
+{\sffamily
+P~\textrm{=}~...........................................................................}
+
+{\sffamily
+P~\textrm{=}~...........................................................................}
+
+{\sffamily
+P~\textrm{=}~...........................................................................}
+\end{enumerate}
+\end{multicols}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Extrait du Brevet}
+
+\begin{enumerate}
+\item {\sffamily
+Écrire sous la forme $a\sqrt{b}$ où \textrm{\textit{b}} est un entier le
+plus petit possible.}
+
+{\sffamily
+ $\sqrt{18}$
+\textrm{=}~.....................................................................}
+
+{\sffamily
+ $\sqrt{12}$
+\textrm{=}~.....................................................................}
+\item {\sffamily
+Développer et simplifier.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+Q~\textrm{=}
+$\left(10\;+\;4\sqrt{6}\right)\left(\sqrt{3}\;-\;\sqrt{2}\right)$ }
+
+{\sffamily\itshape
+................................................................................................................................................................................................................................\textup{...................}}
+
+{\sffamily
+.................................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Identités remarquables}
+
+{\sffamily
+Donne la valeur exacte des nombres suivants sous forme développée et
+réduite.}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{4.3cm}|m{4.3cm}|}
+\hline
+{\sffamily\upshape S~\textrm{=} ${\left(1\;+\;\sqrt{5}\right)^{2}}$ }
+
+\sffamily\upshape
+S~\textrm{=}~................................S~\textrm{=}~................................
+&
+{\sffamily T~\textrm{=} ${\left(3\;-\;\sqrt{2}\right)^{2}}$ }
+
+\sffamily
+T~\textrm{=}~................................T~\textrm{=}~................................\\\hline
+{\sffamily U~\textrm{=} ${\left(\sqrt{7}\;+\;\sqrt{11}\right)^{2}}$ }
+
+\sffamily
+U~\textrm{=}~................................U~\textrm{=}~................................
+&
+{\sffamily V~\textrm{=} $\left(4\;-\;3\sqrt{6}\right)^{2}$ }
+
+\sffamily
+V~\textrm{=}~................................V~\textrm{=}~................................\\\hline
+\end{supertabular}
+\end{center}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{4.3cm}|m{4.3cm}|}
+\hline
+{\sffamily\upshape W~\textrm{=}
+$\left(1\;+\;\sqrt{5}\right)\left(1\;-\;\sqrt{5}\right)$ }
+
+\sffamily\upshape
+W~\textrm{=}~...............................W~\textrm{=}~...............................
+&
+{\sffamily X~\textrm{=}
+$\left(\sqrt{3}\;+\;\sqrt{5}\right)\left(\sqrt{3}\;-\;\sqrt{5}\right)$
+}
+
+\sffamily
+X~\textrm{=}~................................X~\textrm{=}~................................\\\hline
+{\sffamily Y~\textrm{=}
+$\left(2\;-\;3\sqrt{3}\right)\left(2\;+\;3\sqrt{3}\right)$ }
+
+\sffamily
+Y~\textrm{=}~................................Y~\textrm{=}~................................
+&
+\sffamily Z~\textrm{=}
+$\left(6\;-\;2\sqrt{6}\right)\left(6\;+\;2\sqrt{6}\right)$
+Z~\textrm{=}~................................Z~\textrm{=}~................................\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Identités remarquables, le retour}
+
+{\sffamily
+Donne la valeur exacte des nombres suivants sous forme développée et
+réduite.}
+
+\begin{enumerate}
+\item[] {\sffamily
+A~\textrm{=} ${\left(1\;+\;\frac{\sqrt{5}}{5}\right)^{2}}$
+\textrm{=}~.......................................................}
+
+{\sffamily
+A~\textrm{=}~...........................................................................}
+
+{\sffamily
+A~\textrm{=}~...........................................................................}
+
+{\sffamily
+B~\textrm{=}
+${\left(3\;-\;\frac{\sqrt{3}}{2}\right)\left(3\;+\;\frac{\sqrt{3}}{2}\right)}$
+}
+
+{\sffamily
+B~\textrm{=}~...........................................................................}
+
+{\sffamily
+B~\textrm{=}~...........................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Un peu de géométrie}
+
+{\sffamily
+Calcule l{\textquotesingle}aire d{\textquotesingle}un carré de côté
+$\left(\sqrt{3}\;-\;\sqrt{2}\right)$ cm.}
+
+{\sffamily
+.\textit{...................................................................................................................................}..............................}
+
+{\sffamily
+\textit{............................................................}.....................}
+\item {\sffamily\itshape
+Développement}
+
+{\sffamily
+Écris D sous la forme $a+b\sqrt{c}$ où \textrm{\textit{c}} est un entier
+le plus petit possible.}
+
+{\sffamily
+D~\textrm{=}
+$-\;3\sqrt{15}\;+\;\left(2\sqrt{5}\;-\;3\sqrt{3}\right)^{2}$ }
+\end{enumerate}
+{\sffamily\upshape
+D~\textrm{=}~..........................................................................D~\textrm{=}~..........................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+D~\textrm{=}~..........................................................................D~\textrm{=}~..........................................................................}
+\item {\sffamily\itshape
+Développements durables}
+
+{\sffamily
+Développe et simplifie les expressions X et R.}
+
+{\sffamily
+X~\textrm{=}
+$\left(\sqrt{5}\;-\;\sqrt{2}\right)^{2}\;+\;\left(2\sqrt{5}\;-\;4\right)\left(2\sqrt{5}\;+\;4\right)$
+}
+
+{\sffamily
+X~\textrm{=}~..........................................................................}
+
+{\sffamily
+X~\textrm{=}~..........................................................................}
+
+{\sffamily
+X~\textrm{=}~..........................................................................}
+
+{\sffamily
+R~\textrm{=}
+$2\sqrt{3}\left(4\;-\;2\sqrt{2}\right)\;-\;(1+3\sqrt{3})^{2}$ }
+
+{\sffamily
+R~\textrm{=}~..........................................................................}
+
+{\sffamily
+R~\textrm{=}~..........................................................................}
+
+{\sffamily
+R~\textrm{=}~.......................\textit{...................................................}}
+\item {\sffamily\itshape
+De la somme au produit}
+
+{\sffamily
+On donne les deux nombres A~\textrm{=} $5\;-\;3\sqrt{6}$  et
+B~\textrm{=}~ $2\;+\;5\sqrt{6}$ . Écris les nombres suivants sous la
+forme la plus simple possible.}
+
+\begin{enumerate}
+\item {\sffamily
+A~\textrm{+}~B}
+
+{\sffamily
+..................................................................................................................................................................}
+\item {\sffamily
+A~\textrm{{\texttimes}}~B}
+
+{\sffamily
+..................................................................................................................................................................}
+
+{\sffamily
+.................................................................................}
+\item {\sffamily
+A{\texttwosuperior}}
+
+{\sffamily
+..................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Une expression du second degré}
+
+{\sffamily
+Calcule la valeur de l{\textquotesingle}expression
+E~\textrm{=}~3\textrm{\textit{x}}{\texttwosuperior}~\textrm{$-$}~4\textrm{\textit{x}}~\textrm{+}~1
+pour \textrm{\textit{x}}~\textrm{=} ${-\sqrt{7}}.$ }
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+
+{\sffamily
+E~\textrm{=}~...........................................................................}
+\item {\sffamily\itshape
+Une autre}
+
+{\sffamily
+Soit l{\textquotesingle}expression
+H~\textrm{=}~\textrm{$-$}~4\textrm{\textit{x}}{\texttwosuperior}~\textrm{+}~5\textrm{\textit{x}}~\textrm{$-$}~7.
+}
+
+\begin{enumerate}
+\item {\sffamily
+Calcule H pour \textrm{\textit{x}}~\textrm{=} $\sqrt{3}.$ }
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+H~\textrm{=}~..........................................................................H~\textrm{=}~..........................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule H pour \textrm{\textit{x}}~\textrm{=} $1\;+\;\sqrt{2}.$ }
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+H~\textrm{=}~..........................................................................}
+
+{\sffamily
+H~\textrm{=}~..........................................................................}
+
+{\sffamily
+H~\textrm{=}~..........................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+H~\textrm{=}~..........................................................................}
+\item {\sffamily\itshape
+Extrait du Brevet}
+
+{\sffamily
+Le tableau suivant est-il de proportionnalité ?}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{1.996cm}|m{1.8439999cm}|}
+\hline
+\begin{equation*}
+\sqrt{3}\;+\;\sqrt{2}
+\end{equation*}
+ &
+\begin{equation*}
+10\;+\;4\sqrt{6}
+\end{equation*}
+\\\hline
+\begin{equation*}
+\sqrt{3}\;-\;\sqrt{2}
+\end{equation*}
+ &
+\centering\arraybslash \sffamily 2\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item[] {\sffamily
+...................................................................................................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Pour prendre un peu de hauteur}
+
+{\sffamily
+OAB est un triangle tel que OA~\textrm{=}~6~cm et OB~\textrm{=}~
+$\sqrt{57}$ cm.}
+
+\begin{enumerate}
+\item {\sffamily
+Sur le schéma suivant, place le point H, pied de la hauteur issue de O.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+[Warning: Draw object ignored]On donne OH~\textrm{=}~3~cm.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Calcule la valeur exacte de AH.}
+
+{\sffamily
+....................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily
+Calcule la valeur exacte de HB.}
+
+{\sffamily
+....................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily
+Calcule la valeur exacte de AB.}
+
+{\sffamily
+...................................................................................................................................................................................................................................................}
+\end{enumerate}
+\item {\sffamily\itshape
+Triangle rectangle ?}
+
+{\sffamily
+Un triangle IJK tel que IJ~\textrm{=} $\left(2\;+\;3\sqrt{5}\right)$ cm
+; JK~\textrm{=}~ $\left(6\;+\;\sqrt{5}\right)$ cm et IK~\textrm{=}
+$\sqrt{8}$ cm est-il rectangle ?}
+
+{\sffamily
+.....................................................................................................................................................................................................................................................................................................................................................................................................................}
+\item {\sffamily\itshape
+Il faut OC...(le niveau)}
+
+{\sffamily
+[Warning: Draw object ignored]La figure ci-dessous n{\textquoteright}est
+pas en vraie grandeur et les mesures de longueur sont en centimètre.}
+
+{\sffamily
+A est un point de [OB] et C un point de [OD]. \newline
+On donne OA~\textrm{=}~2 ; AB~\textrm{=}~8 et OD~\textrm{=} $\sqrt{75}.$
+}
+
+{\sffamily
+Les droites (BD) et (AC) sont parallèles.}
+
+{\sffamily
+Calcule OC.}
+\end{enumerate}
+{\sffamily\upshape
+..................................................................................................................................................................}
+
+{\sffamily\upshape
+..................................................................................................................................................................}
+
+{\sffamily\upshape
+..................................................................................................................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+.................................................................................}
+\item {\sffamily\itshape
+Une diagonale de fou}
+
+{\sffamily
+[Warning: Draw object ignored]ABCDEFGH est un cube
+d{\textquotesingle}arête 2~cm.}
+
+\begin{enumerate}
+\item {\sffamily
+Calcule la valeur exacte de AC, la diagonale de la face ABCD.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+..................................................................................................................................................................}
+
+{\sffamily
+...................................................................................................................................................................................................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+En admettant que le triangle ACG soit rectangle en C, calcule la valeur
+exacte de AG, la grande diagonale du cube.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+..................................................................................................................................................................}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] {\sffamily
+...................................................................................................................................................................................................................................................}
+\end{enumerate}
+\clearpage\setcounter{page}{1}\pagestyle{FichediteursrieivimpaireD}
+\thispagestyle{FichediteursrieivpaireG}
+{\centering\sffamily\bfseries\color{black}
+Le cours avec les aides animées
+\par}
+
+{\sffamily\upshape
+\textbf{Q1.}~Quel est le signe du carré d{\textquotesingle}un nombre ?}
+
+{\sffamily\upshape
+\textbf{Q2.}~Quel est le nombre de solutions d{\textquotesingle}une
+équation du type
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~\textrm{\textit{a}},
+lorsque \textrm{\textit{a}} est un nombre strictement positif ?
+Strictement négatif ? Nul ?}
+
+{\centering\sffamily\bfseries\color{black}
+Les exercices d{\textquotesingle}application
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\begin{enumerate}
+\item {\sffamily\itshape
+Testons les solutions}
+
+\begin{enumerate}
+\item {\sffamily
+Le nombre~ $\sqrt{5}$ ~est-il solution de l{\textquotesingle}équation
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~22~\textrm{=}~3 ?}
+\end{enumerate}
+\end{enumerate}
+{\sffamily
+ $\left(\sqrt{5}\right)^{2}$
+\textrm{$-$}~22~\textrm{=}~........~\textrm{$-$}~22~\textrm{=}~.........}
+
+{\sffamily\upshape
+On constate que pour \textrm{\textit{x}}~\textrm{=} $\sqrt{5}$ ,
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~22~......~3.\newline
+ $\sqrt{5}$ ................... solution de l{\textquotesingle}équation
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~22~\textrm{=}~3.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Le nombre~ $-\;\sqrt{3}$ ~est-il solution de l{\textquotesingle}équation
+6\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~18~\textrm{=}~0~?}
+
+{\sffamily
+6~\textrm{{\texttimes}}~\textrm{(}........\textrm{)}\textsuperscript{2}
+\textrm{$-$}~18~\textrm{=}~6~\textrm{{\texttimes}}~\textit{.........}~\textrm{$-$}~18~\textrm{=}~..........}
+\end{enumerate}
+{\sffamily
+On constate que pour \textrm{\textit{x}}~\textrm{=} $-\;\sqrt{3}$ ,
+6\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~18~......~0.}
+
+{\sffamily
+ $-\;\sqrt{3}$ ............... solution de l{\textquotesingle}équation
+6\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~18~\textrm{=}~0.}
+\item {\sffamily\itshape
+Retrouvons un résultat du cours.}
+
+{\sffamily
+Résous l{\textquotesingle}équation
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~36.}
+\end{enumerate}
+\begin{center}
+\tablehead{\centering \sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~36~\textrm{=}~0 &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \sffamily On se ramène à une équation du type
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~\textrm{\textit{a}}~\textrm{=}~0.\end{enumerate}
+\\}
+\begin{supertabular}{m{3.599cm}m{5.0cm}}
+\centering \sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~.....\textsuperscript{2}~\textrm{=}~0
+&
+\sffamily\upshape On écrit l{\textquotesingle}équation sous la forme
+d{\textquotesingle}une différence de deux carrés.\\
+\centering \sffamily
+(\textrm{\textit{x}}~\textrm{$-$}~....)(\textrm{\textit{x}}\textrm{\textit{~}}\textrm{+}~....)~\textrm{=}~0
+&
+\sffamily\upshape On reconnaît une identité remarquable et on factorise
+l{\textquotesingle}expression.\\
+\end{supertabular}
+\end{center}
+{\sffamily
+Le produit est nul donc un de ses facteurs est nul.}
+
+{\centering\sffamily
+\textrm{\textit{x}}~\textrm{$-$}~......~\textrm{=}~0 \ \ \ \ \ \ ou
+\ \ \ \ \ \ \textrm{\textit{x}}~\textrm{+}~......~\textrm{=}~0
+\par}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item[] {\sffamily
+\ \ \ donc\textrm{\textit{ \ \ \ \ \ \ \ \ \ \ \ \ x}}~\textrm{=}~......
+\ \ ou
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textrm{\textit{x}}~\textrm{=}~......}
+
+{\sffamily
+Les solutions de l{\textquotesingle}équation sont
+............................~.}
+\end{enumerate}
+\item {\sffamily\itshape
+Application du cours}
+
+\begin{enumerate}
+\item {\sffamily
+Résous l{\textquotesingle}équation
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~15.}
+\end{enumerate}
+{\sffamily
+15~\textrm{{\textgreater}}~0 donc l{\textquotesingle}équation admet
+..............................~.}
+
+{\sffamily
+Les solutions sont donc .........................................~.}
+
+\setcounter{saveenum}{\value{enumii}}
+\begin{enumerate}
+\setcounter{enumii}{\value{saveenum}}
+\item {\sffamily
+Résous, si possible, les équations suivantes.}
+\end{enumerate}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{4.3cm}|m{4.3cm}|}
+\hline
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~\textrm{$-$}~5}\par
+
+\setcounter{saveenum}{\value{enumii}}
+\begin{enumerate}
+\setcounter{enumii}{\value{saveenum}}
+\item[] \sffamily ......................................\end{enumerate}
+\sffamily
+............................................................................\end{enumerate}
+ &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering\arraybslash \sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~0,25\end{enumerate}
+{\sffamily\upshape ......................................}
+
+{\sffamily\upshape ......................................}
+
+\sffamily\upshape ......................................\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Un peu plus loin}
+
+\begin{enumerate}
+\item[] {\sffamily
+Résous, si possible, les équations suivantes.}
+\end{enumerate}
+\end{enumerate}
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{4.3cm}|m{-0.098000005cm}m{4.1990004cm}|}
+\hline
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering \sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{$-$}~4~\textrm{=}~5\end{enumerate}
+{\sffamily
+\textrm{\textit{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x}}\textsuperscript{2}~\textrm{=}~5
+.........}
+
+{\sffamily
+\textrm{\textit{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x}}\textsuperscript{2}~\textrm{=}~.........}
+
+\sffamily\upshape Comme ............, il y a deux solutions :
+............ ...................................... &
+\multicolumn{2}{m{4.3010006cm}|}{\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{+}~6~\textrm{=}~13}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+}\\\hline
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+\textrm{\textit{x}}\textsuperscript{2}~\textrm{+}~11~\textrm{=}~7}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+ &
+\multicolumn{2}{m{4.3010006cm}|}{\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+6~\textrm{$-$}~\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~\textrm{$-$}~5}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+}\\\hline
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+4\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~16}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+ &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] ~
+\end{enumerate}
+ &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily
+\textrm{$-$}~5\textrm{\textit{x}}\textsuperscript{2}~\textrm{=}~9}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+\\\hline
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering \sffamily  ${\frac{{x}^{2}}{9}}$
+\textrm{=}~1\end{enumerate}
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ...................................... &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] ~
+\end{enumerate}
+ &
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] \centering {\sffamily  ${\frac{{x}^{2}}{7}}$
+\textrm{$-$}~3~\textrm{=}~\textrm{$-$}~5}\par
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+{\sffamily ......................................}
+
+\sffamily ......................................\end{enumerate}
+\\\hline
+\end{supertabular}
+\end{center}
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\itshape
+Un peu plus difficile}
+
+\begin{enumerate}
+\item {\sffamily
+Résous l{\textquotesingle}équation
+(\textrm{\textit{x}}~\textrm{+}~5)\textsuperscript{2}~\textrm{=}~9.}
+\end{enumerate}
+\end{enumerate}
+{\sffamily\upshape
+9 est le carré de ....... et de ....... ;\newline
+donc \ \ \textrm{\textit{x}}~\textrm{+}~5~\textrm{=}~....... \ \ ou
+\ \ \textrm{\textit{x}}~\textrm{+}~5~\textrm{=}~......}
+
+{\sffamily\upshape
+\ \ \ \ \ \ \ \ \ \ ...................... ou ......................~.}
+
+{\sffamily
+Les deux solutions sont donc \ ......... \ et \ .........~.}
+
+\liststyleNumrotationdesexerciceslivrets
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item \begin{enumerate}
+\item {\sffamily
+Résous l{\textquotesingle}équation
+(3\textrm{\textit{x}}\textrm{\textit{~}}\textrm{$-$}~5)\textsuperscript{2}~\textrm{=}~2.}
+\end{enumerate}
+{\sffamily
+..................................................................................................................................................................}
+
+{\sffamily
+....................................................................................................................................................................................................................................................................................................................................}
+\end{enumerate}
+\end{document}

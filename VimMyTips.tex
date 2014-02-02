@@ -203,13 +203,13 @@
  | `Shift-v jj`               | selection de lignes entières                   |
  | `Ctrl-v  lljj`             | selection de colonnes                          |
  | `gv`                       | Resélectionne le bloc                          |
- | `h j k l'i , `D`           | En mode visuel : déplace bloc, duplique [^9]   |
+ | `h j k l'i , `D`           | *DRAGVISUAL*:    déplace bloc, duplique        |
 
  |                            | INSERTION SUR PLUSIEURS LIGNES                 |
  | :------------------------- | :--------------------------------------------- |
- | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
  | `Ctrl-v jj $ A STR Esc`    | Insertion à la fin des lignes d'un bloc        |
- | `Ctrl-v jj Shift-i # Esc`  | Commente les lignes d'un bloc                  |
+ | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
+ | `Ctrl-v jj I # Esc`        | Commente les lignes d'un bloc                  |
  | `Shift-v s/^/#`            | Commente les lignes d'un bloc (autre méthode)  |
 
  |                            | INDENTATION, AUTOINDENTATION ET TABULARIZE     |
@@ -253,19 +253,37 @@
  | `q`                        | stopppe enregistrement action [^8]             |
  | `[6]@a`                    | joue 6x enregistrement action (registre a...z) |
 
+ |                            | PLUGINS                                        |
+ | :------------------------- | :--------------------------------------------- |
+ | `<leader><leader>w`        | *EASYMOTION*                                   |
+ | `<leader>tt`               | *TAGBAR*                                       |
+ | `<leader>tt`  `Ctrl-]`     | *TAGBAR*  Déf du mot sous curseur              |
+ | `<leader>u`                | *UNDOTREE*                                     |
+ | `Ctrl-k`                   | *NEOCOMPLCACHE* autocomplete snippet           |
+ | `<leader>gs`               | *FUGITIVE* :Gstatus `-` un/stage, `p` hunks    |
+ | `<leader>gd`               | *FUGITIVE* :Gdiff                              |
+ | `<leader>gc`               | *FUGITIVE* :Gcommit                            |
+ | `<leader>gl`               | *FUGITIVE* :Glog                               |
+ | `<leader>gp`               | *FUGITIVE* :Git push                           |
+ | `Ctrl-e`                   | *NERDTree*                                     |
 
-[^1]:  Dans le .vimrc `:mkview    " save folds` & `:loadview  " restore folds`
+ |                            | TAGS and *SURROUND*                            |
+ | :------------------------- | :--------------------------------------------- |
+ | `{d,y,v}it`                | deletes, yanks or visual Inside Tags           |
+ | `cst<h3>`                  | Change Surrounding Tag en <h3>                 |
+ | `ds"`                      | Supprime le surround ".."                      |
+ | `cs">`                     | Remplace le surround ".." en <..>              |
+ | `cs"<h3>`                  | Remplace le surround ".." en <h3>..</h3>       |
+ | `S<h3>`                    | En visual : surround sélection en <h3>..</h3>  |
+
+[^1]:  Dans le .vimrc `:mkview    " save folds` & `:lowercaseadview  " restore folds`
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
 [^3]: The lower case equivalents move focus instead of moving the window.
-[^5]: In a search, `\s` finds whitespace (a space or a tab), and `\+` finds 
-      one or more occurrences.
+[^5]: In a search, `\s` finds whitespace (a space or a tab), 
+               and `\+` finds one or more occurrences.
 [^6]: donner le bon le filetype et enclancher le smartindent
 [^7]: More info in http://www.vim.org/tips/tip.php?tip_id=330 
       *Autre méthode* :set pastetoggle=<F3>
-[^8]: More info in http://www.vim.org/tips/tip.php?tip_id=144
-[^9]: vim-dragvisuals
-[^10]: cf :help :sort
-
 \end{verbatim}
 \end{multicols}
 \end{document}
