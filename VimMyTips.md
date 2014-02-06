@@ -14,8 +14,8 @@
  | `10 Ctrl-w {>,<}`          | " " idem                                       |
  | `Ctrl-w =`                 | Égalise la taille des fenêtres                 |
  | `Ctrl-w _`                 | Augment au maximum la taille de la fenêtre     |
- | `Ctrl-w s`                 | Partge la fenêtre courante en deux             |
- | `Ctrl-w H`  `Ctrl-w L`     | Place la fenêtre courante à gauche / à droite  |
+ | `Ctrl-w s`                 | Partage la fenêtre courante en deux            |
+ | `Ctrl-w H`  `Ctrl-w L`     | Place la fenêtre courante à gauche /à droite   |
  | `Ctrl-w J`  `Ctrl-w K`     | Place la fenêtre courante en haut /en bas [^3] |
 
  |                            | BUFFERS                                        |
@@ -109,14 +109,14 @@
  | `Shift-v jj`               | selection de lignes entières                   |
  | `Ctrl-v  lljj`             | selection de colonnes                          |
  | `gv`                       | Resélectionne le bloc                          |
- | `h j k l'i , `D`           | *DRAGVISUAL*:    déplace bloc, duplique        |
+ | `h j k l' , `D`            | *DRAGVISUAL*:    déplace bloc, duplique        |
 
  |                            | INSERTION SUR PLUSIEURS LIGNES                 |
  | :------------------------- | :--------------------------------------------- |
- | `Ctrl-v jj $ A STR Esc`    | Insertion à la fin des lignes d'un bloc        |
+ | `Ctrl-v jj $ A foo Esc`    | Insertion à la fin des lignes d'un bloc        |
  | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
  | `Ctrl-v jj I # Esc`        | Commente les lignes d'un bloc                  |
- | `Shift-v s/^/#`            | Commente les lignes d'un bloc (autre méthode)  |
+ | `Shift-v jj s/^/#`         | Commente les lignes d'un bloc (autre méthode)  |
 
  |                            | INDENTATION, AUTOINDENTATION ET TABULARIZE     |
  | :------------------------- | :--------------------------------------------- |
@@ -139,22 +139,21 @@
  | `zR`                       | Opens ALL folds (`zr` decr foldlevel by 1)     |
  | `zM`                       | Closes ALL folds (`zM` incr foldlevel by 1)    |
  | `zf%`                      | creates fold from a delimitor to its brother   |
- | `Vjjjjzf`                  | creates fold from visual block                 |
+ | `V jj zf`                  | creates fold from visual block                 |
  | `zf#j`                     | creates fold from the cursor down # lines      |
  | `zf/string`                | creates fold from the cursor to string         |
  | `zj`                       | moves the cursor to the next fold              |
  | `zk`                       | moves the cursor to the previous fold          |
  | `zd`                       | deletes the fold at the cursor                 |
  | `zE`                       | deletes ALL folds                              |
- | `[z`                       | move to start of open fold                     |
- | `]z`                       | move to end of open fold                       |
+ | `[z` `]z`                  | move to start/ end of open fold                |
 
  |                            | DIVERS                                         |
  | :------------------------- | :--------------------------------------------- |
  | `:set paste`               | Avant de coller depuis le navigateur           |
  | `:set nopaste`             | Après avoir collé depuis le navigateur [^7]    |
  | `:sort [n]`                | Trier sur première colonne [numérique] [^10]   |
- | `:%!sort -n -k 3           | à l'aide de gnu sort                           |
+ | `:%!sort -n -k 3           |     à l'aide de gnu sort                       |
  | `qa` ... `qz`              | Démarre enregistrement action (registre a...z) |
  | `q`                        | stopppe enregistrement action [^8]             |
  | `[6]@a`                    | joue 6x enregistrement action (registre a...z) |
@@ -175,12 +174,12 @@
 
  |                            | TAGS and *SURROUND*                            |
  | :------------------------- | :--------------------------------------------- |
+ | `S<h3>`                    | Add Surround to visual sélection               |
  | `{d,y,v}it`                | deletes, yanks or visual Inside Tags           |
- | `cst<h3>`                  | Change Surrounding Tag en <h3>                          |
- | `ds"`                      | Supprime le surround ".."                      |
- | `cs">`                     | Remplace le surround ".." en <..>              |
- | `cs"<h3>`                  | Remplace le surround ".." en <h3>..</h3>       |
- | `S<h3>`                    | En visual : surround sélection en <h3>..</h3>  |
+ | `{d,y,v}at`                | deletes, yanks or visual Around Tags           |
+ | `cst<h3>`                  | Change Surrounding Tag (current) to <h3>       |
+ | `cs">` `cs"<h3>`           | Change Surrounding " to  <..> / <h3></h3>      |
+ | `ds"`                      | Delete le surround "                           |
 
 [^1]:  Dans le .vimrc `:mkview    " save folds` & `:lowercaseadview  " restore folds`
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
