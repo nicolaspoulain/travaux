@@ -49,7 +49,13 @@ class Parallelogram(Quadrilateral):
         Quadrilateral.__init__(self)
 
     def perimeter(self):
-        """ Calcul du périmètre """
+        """
+        Calcul du périmètre
+
+        >>> r = Parallelogram(2, 3, 15)
+        >>> print(str(r.perimeter()))
+        10
+        """
         return 2 * (self.side1 + self.side2)
 
     def get_infos(self):
@@ -83,7 +89,13 @@ class Rectangle(Parallelogram):
         Parallelogram.__init__(self, side1, side2, 90)
 
     def area(self):
-        """ Calcul de l'aire """
+        """
+        Calcul de l'aire
+
+        >>> r = Rectangle(2, 3)
+        >>> print(str(r.area()))
+        6
+        """
         return self.side1 * self.side2
 
     def get_infos(self):
@@ -106,3 +118,7 @@ my_para = Parallelogram(1, 7, 45)
 my_para.get_infos()
 my_rectangle = Rectangle(2, 3)
 my_rectangle.get_infos()
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
