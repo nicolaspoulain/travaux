@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+
 # les filtres Baysesiens permettent de classifier des données.
 # Exemple d'application : reconnaissance automatique de la langue, anti-Spam,
 # cryptographie...
