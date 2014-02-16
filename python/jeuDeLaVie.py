@@ -4,16 +4,15 @@
 
 class Cell(object):
     """
-    Modélise une cellule
-    Son identité est donnée par sa position (x,y)
-    dans le monde
+    An organic cell. Its Id is given by its (x,y) position in the worlsModélise
+    une cellule
     """
 
     def __init__(self, x, y, act_state, ftr_state):
         """
-        Définit la cellule (x,y)
-        Son état actuel 0 pour morte, 1 pour vivante
-        Son état futur  0 pour morte, 1 pour vivante
+        Defines the (x,y) cell
+        Its actual state is 0:dead or 1:alive
+        Its future state is 0:dead or 1:alive
         """
         self.position = Position(x, y)
         self.act_state = act_state
@@ -22,7 +21,7 @@ class Cell(object):
 
 class Position(object):
     """
-    Modélise une position dans un monde
+    iModélise une position dans un monde
     torique et discret en deux dimensions dim_x * dim_y
     """
 
@@ -73,10 +72,15 @@ cell[3][5] = Cell(3, 5, 1, 0)
 cell[1][5] = Cell(1, 5, 1, 0)
 
 "pour un affichage raisonnablement temporisé"
-import time
+import curses
+screen = curses.initscr()
+curses.noecho()
+curses.curs_set(0)
+screen.keypad(1)
 
-"On lance quelques cycles de vie"
-for cycle in range(100):
+while True:
+    event = screen.getch()
+    "On lance quelques cycles de vie"
     """
     On parcourt le monde pour déterminer l'état futur de chaque cellule
     et l'afficher sur une grille sous forme de . et de o
@@ -129,7 +133,11 @@ for cycle in range(100):
                 """
                 row += "."
                 cell[x][y].ftr_state = 0
-        print row
+        if x == 0:
+            screen.clear()
+        screen.addstr(row)
+        screen.addstr("\n")
+        #print row
     """
     On parcourt le monde pour incrémenter le temps en
     remplaçant affectant l'état futur à l'état présent
@@ -137,9 +145,11 @@ for cycle in range(100):
     for x in xrange(dim_x):
         for y in xrange(dim_y):
             cell[x][y].act_state = cell[x][y].ftr_state
-    time.sleep(2)
-    print
+    #time.sleep(2)
+    #print
 
+"""
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+"""
