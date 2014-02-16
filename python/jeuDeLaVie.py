@@ -3,10 +3,7 @@
 
 
 class Cell(object):
-    """
-    An organic cell. Its Id is given by its (x,y) position in the worlsModélise
-    une cellule
-    """
+    """ An organic cell. Id given by (x,y) position in the worlsModélise """
 
     def __init__(self, x, y, act_state, ftr_state):
         """
@@ -20,36 +17,28 @@ class Cell(object):
 
 
 class Position(object):
-    """
-    iModélise une position dans un monde
-    torique et discret en deux dimensions dim_x * dim_y
-    """
+    """ Position in a toric matrix world dim_x * dim_y """
 
     def __init__(self, x, y):
-        """
-        Constructeur de Position
-        x : Abscisse
-        y : Ordonnée
-        """
         self.x = x
         self.y = y
 
     def getX(self, dim_x=10):
         """
-        Retourne l'abscisse corrigée
-
+        Return x coordinate in tore
+        e.g. if dim_x=10, x=18 equiv. x=8
         >>> p = Position(18,22)
-        >>> print(str(p.getX()))
+        >>> print(str(p.getX(10)))
         8
         """
         return self.x % dim_x
 
     def getY(self, dim_y=8):
         """
-        Retourne l'ordonnée corrigée
-
+        Return y coordinate in tore
+        e.g. if dim_y)=8, y=22 equiv. y=6
         >>> p = Position(18,22)
-        >>> print(str(p.getY()))
+        >>> print(str(p.getY(8)))
         6
         """
         return self.y % dim_y
@@ -66,10 +55,11 @@ for x in xrange(dim_x):
         cell[x][y] = Cell(x, y, 0, 0)
 
 "Donne la vie à quelques cellules dans le monde"
+cell[1][1] = Cell(1, 1, 1, 0)
+cell[2][1] = Cell(2, 1, 1, 0)
+cell[3][1] = Cell(3, 1, 1, 0)
+cell[3][2] = Cell(3, 2, 1, 0)
 cell[2][3] = Cell(2, 3, 1, 0)
-cell[2][4] = Cell(2, 4, 1, 0)
-cell[3][5] = Cell(3, 5, 1, 0)
-cell[1][5] = Cell(1, 5, 1, 0)
 
 "pour un affichage raisonnablement temporisé"
 import curses
@@ -80,7 +70,6 @@ screen.keypad(1)
 
 while True:
     event = screen.getch()
-    "On lance quelques cycles de vie"
     """
     On parcourt le monde pour déterminer l'état futur de chaque cellule
     et l'afficher sur une grille sous forme de . et de o
@@ -105,39 +94,32 @@ while True:
             On calcule le nombre de cellules en contact avec
             la cellule courante
             """
-            c = cell[p1.getX()][p1.getY()].act_state
-            c += cell[p2.getX()][p2.getY()].act_state
-            c += cell[p3.getX()][p3.getY()].act_state
-            c += cell[p4.getX()][p4.getY()].act_state
-            c += cell[p5.getX()][p5.getY()].act_state
-            c += cell[p6.getX()][p6.getY()].act_state
-            c += cell[p7.getX()][p7.getY()].act_state
-            c += cell[p8.getX()][p8.getY()].act_state
+            c = cell[p1.getX(dim_x)][p1.getY(dim_y)].act_state
+            c += cell[p2.getX(dim_x)][p2.getY(dim_y)].act_state
+            c += cell[p3.getX(dim_x)][p3.getY(dim_y)].act_state
+            c += cell[p4.getX(dim_x)][p4.getY(dim_y)].act_state
+            c += cell[p5.getX(dim_x)][p5.getY(dim_y)].act_state
+            c += cell[p6.getX(dim_x)][p6.getY(dim_y)].act_state
+            c += cell[p7.getX(dim_x)][p7.getY(dim_y)].act_state
+            c += cell[p8.getX(dim_x)][p8.getY(dim_y)].act_state
             if cell[x][y].act_state == 0 and c == 3:
-                """
-                Si la cellule courante est morte et a 3 voisines,
-                elle naît
-                """
-                row += "o"
+                """ If cell is dead and has 3 neighbours, it births """
                 cell[x][y].ftr_state = 1
             elif cell[x][y].act_state == 1 and (c == 2 or c == 3):
-                """
-                Si la cellule courante est vivante et a 2 ou 3 voisines,
-                elle survit
-                """
-                row += "o"
+                """ If cell is alive and has 2 or 3 neighbours, it survives """
                 cell[x][y].ftr_state = 1
             else:
-                """
-                Dans tous les autres cas, la cellule meurt ou reste morte
-                """
-                row += "."
+                """ In all othe cases, it dies or stays dead """
                 cell[x][y].ftr_state = 0
+            """Affichage"""
+            if cell[x][y].act_state == 1:
+                row += "o"
+            else:
+                row += "."
         if x == 0:
             screen.clear()
         screen.addstr(row)
         screen.addstr("\n")
-        #print row
     """
     On parcourt le monde pour incrémenter le temps en
     remplaçant affectant l'état futur à l'état présent
@@ -148,8 +130,6 @@ while True:
     #time.sleep(2)
     #print
 
-"""
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-"""
