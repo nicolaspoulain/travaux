@@ -4,6 +4,25 @@
 
 #Vim Memo
 
+ |                            | MOVE TO...                                     |
+ | :------------------------- | :--------------------------------------------- |
+ | `h j k l`                  | Left, down, up, right                          |
+ | `0 £ ^`                    | Start, end of line - first nonBlank char       |
+ | `w e`                      | Start, end of word                             |
+ | `gg G`                     | First, last line of file                       |
+ | `Ctrl-d Ctrl-u`            | Half page down, up                             |
+ | `Ctrl-b Ctrl-f`            | Page down, up                                  |
+
+ |                            | RECHERCHE                                      |
+ | :------------------------- | :--------------------------------------------- |
+ | `*`                        | Recherche pour le mot exact sous le curseur    |
+ | `g*`                       | Recherche pour le mot partiel sous le curseur  |
+ | `[I`                       | Affiche lignes contenant mot sous le curseur   |
+ | `:g/foo`                   | Affiche les lignes contenant foo               |
+ | `:g/foo/d`                 | supprime les lignes contenant chaîne foo       |
+ | `:v/foo/d`                 | supprime lignes ne contenant pas foo           |
+ | `:g/^[\.]*$/d`             | supprime les lignes vides                      |
+
  |                            | SPLIT ET RESIZE                                |
  | :------------------------- | :--------------------------------------------- |
  | `:res 60`                  | Définit la hauteur de la fenêtre               |
@@ -18,32 +37,15 @@
  | `Ctrl-w H`  `Ctrl-w L`     | Place la fenêtre courante à gauche /à droite   |
  | `Ctrl-w J`  `Ctrl-w K`     | Place la fenêtre courante en haut /en bas [^3] |
 
- |                            | BUFFERS                                        |
+ |                            | BUFFERS  (better with bufferline)              |
  | :------------------------- | :--------------------------------------------- |
  | `:e newFile`               | ouvre un nouveau buffer avec newFile           |
  | `:ls`                      | pareil que :buffers, mais en plus court        |
  | `:bw`                      | ferme le buffer courant                        |
  | `:sb x`                    | place le buffer x dans une fenêtre splitée     |
- | `:bnext`       maped to F2 | Opens next buffer                              |
- | `:bprevious`   maped to F3 | Opens previous buffer                          |
+ | `:bn :bp`   maped to F2 F3 | Opens next, previous buffer                    |
 
- |                            | TABS                                           |
- | :------------------------- | :--------------------------------------------- |
- | `:sp file <CR> CTRL-w T`   | crée un nouvel onglet avec le fichier file     |
- | `Ctrl-PgDn` & `Ctrl-PgUp`  | go to next tab & previous tab                  |
- | `gt` (`5gt`)               | to switch to next tab (to tab 5)               |
-
- |                            | RECHERCHE, REMPLACEMENT ET SUPPRESSIONS        |
- | :------------------------- | :--------------------------------------------- |
- | `*`                        | Recherche pour le mot exact sous le curseur    |
- | `g*`                       | Recherche pour le mot partiel sous le curseur  |
- | `[I`                       | Affiche lignes contenant mot sous le curseur   |
- | `:g/foo`                   | Affiche les lignes contenant foo               |
- | `:g/foo/d`                 | supprime les lignes contenant chaîne foo       |
- | `:v/foo/d`                 | supprime lignes ne contenant pas foo           |
- | `:g/^[\.]*$/d`             | supprime les lignes vides                      |
-
- |                            | RECHERCHE, REMPLACEMENT ET SUPPRESSIONS        |
+ |                            | REMPLACEMENT ET SUPPRESSIONS                   |
  | :------------------------- | :--------------------------------------------- |
  | `:s/foo/bar/`              | remplace le 1er foo de ligne courante par bar  |
  | `:s/foo/bar/g`             | remplace tous foo de ligne courante par bar    |
@@ -62,17 +64,13 @@
  | `:s/.*/\U&/`               | passe la ligne courante en majuscule           |
  | `:%s/^foo//`               | Supprime TOUS les foo placés en début de ligne |
 
-                  |        | SINGLE-CHARACTER                   |
-                  | ` .`   | any character                      |
+                  |        | ANCHORS                            |
+                  | ^      | start of line                      |
+                  | $      | end of line                        |
+                  | \<     | beginning of a word                |
+                  | \>     | end of a word                      |
                   | `[ ]`  | any characters listet              |
                   | `[^ ]` | any characters except those listet |
-
-                  |        | ANCHORS                   |
-                  | ^      | start of line             |
-                  | $      | end of line               |
-                  | \<     | beginning of a word       |
-                  | \>     | end of a word             |
-                  | `\| `  | alternation (logical OR)  |
 
                   |                        | METACARACTÈRES                |
                   | `.`                    | any character except new line |
@@ -142,10 +140,8 @@
  | `V jj zf`                  | creates fold from visual block                 |
  | `zf#j`                     | creates fold from the cursor down # lines      |
  | `zf/string`                | creates fold from the cursor to string         |
- | `zj`                       | moves the cursor to the next fold              |
- | `zk`                       | moves the cursor to the previous fold          |
- | `zd`                       | deletes the fold at the cursor                 |
- | `zE`                       | deletes ALL folds                              |
+ | `zj` `zk`                  | moves the cursor to the next, previous fold    |
+ | `zd` `zE`                  | deletes the fold at the cursor, ALL folds      |
  | `[z` `]z`                  | move to start/ end of open fold                |
 
  |                            | DIVERS                                         |
@@ -165,7 +161,7 @@
  | `<leader>tt`  `Ctrl-]`     | *TAGBAR*  Déf du mot sous curseur              |
  | `<leader>u`                | *UNDOTREE*                                     |
  | `Ctrl-k`                   | *NEOCOMPLCACHE* autocomplete snippet           |
- | `<leader>gs`               | *FUGITIVE* :Gstatus `-` un/stage, `p` hunks    |
+ | `<leader>gs`               | *FUGITIVE* :Gstatus `-`un/stage, `cc`commt msg |
  | `<leader>gd`               | *FUGITIVE* :Gdiff                              |
  | `<leader>gc`               | *FUGITIVE* :Gcommit                            |
  | `<leader>gl`               | *FUGITIVE* :Glog                               |
