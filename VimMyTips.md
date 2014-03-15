@@ -42,7 +42,7 @@
  | `:e newFile`               | ouvre un nouveau buffer avec newFile           |
  | `:ls`                      | pareil que :buffers, mais en plus court        |
  | `:bw`                      | ferme le buffer courant                        |
- | `:sb x`                    | place le buffer x dans une fenêtre splitée     |
+ | `:sb x` `vsp | bx`         | place le buffer x dans une fenêtre splitée     |
  | `:bn :bp`   maped to F2 F3 | Opens next, previous buffer                    |
 
  |                            | REMPLACEMENT ET SUPPRESSIONS                   |
@@ -116,7 +116,7 @@
  | `Ctrl-v jj I # Esc`        | Commente les lignes d'un bloc                  |
  | `Shift-v jj s/^/#`         | Commente les lignes d'un bloc (autre méthode)  |
 
- |                            | INDENTATION, AUTOINDENTATION ET TABULARIZE     |
+ |                            | INDENTATION, AUTOINDENTATION ET *TABULARIZE*   |
  | :------------------------- | :--------------------------------------------- |
  | `>>` `<<`                  | Indente ou desindente la ligne courante
  | `gg=G`                     | Si marche pas, set `ft=html` + `set si`[^6]    |
@@ -157,16 +157,7 @@
  |                            | PLUGINS                                        |
  | :------------------------- | :--------------------------------------------- |
  | `<leader><leader>w`        | *EASYMOTION*                                   |
- | `<leader>tt`               | *TAGBAR*                                       |
- | `<leader>tt`  `Ctrl-]`     | *TAGBAR*  Déf du mot sous curseur              |
- | `<leader>u`                | *UNDOTREE*                                     |
- | `Ctrl-k`                   | *NEOCOMPLCACHE* autocomplete snippet           |
  | `<leader>gs`               | *FUGITIVE* :Gstatus `-`un/stage, `cc`commt msg |
- | `<leader>gd`               | *FUGITIVE* :Gdiff                              |
- | `<leader>gc`               | *FUGITIVE* :Gcommit                            |
- | `<leader>gl`               | *FUGITIVE* :Glog                               |
- | `<leader>gp`               | *FUGITIVE* :Git push                           |
- | `Ctrl-e`                   | *NERDTree*                                     |
 
  |                            | TAGS and *SURROUND*                            |
  | :------------------------- | :--------------------------------------------- |
