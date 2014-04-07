@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
 
 # http://www.petercollingridge.co.uk/pygame-physics-simulation/movement
 
@@ -16,32 +18,31 @@ clock = pygame.time.Clock()
 
 
 class Particle:
-    def __init__(self, (x,y), size, date_of_death):
-        self.x = x
-        self.y = y
-        self.size = size
+    
+    ## Donne naissance à une cellule.
+    #  Sont définies : position , taille, couleur, date de mort.
+    def __init__(self, world_width, world_height):
+        self.size = random.randint(2,8)
+        self.x = random.randint(self.size, world_width - self.size)
+        self.y = random.randint(self.size, world_height - self.size)
         self.colour = (0, 0, 255)
         self.thickness = 0
-        self.dod = date_of_death
+        # Date Of Death
+        self.dod = pygame.time.get_ticks() + 10 * random.randint(50,255)
 
     def display(self):
        pygame.draw.circle(screen, self.colour, \
                (self.x, self.y), self.size, self.thickness)
 
     def move(self):
-        if self.x < self.size:
-            minx = 0
+        if self.x < self.size: minx = 0
         else: minx = -2
-        if self.x > width - self.size:
-            maxx = 0
+        if self.x > width - self.size: maxx = 0
         else: maxx = 2
-        if self.y < self.size:
-            miny = 0
+        if self.y < self.size: miny = 0
         else : miny = -2
-        if self.y > height - self.size:
-            maxy = 0
+        if self.y > height - self.size: maxy = 0
         else : maxy = 2
-
         self.x += random.randint(minx,maxx)
         self.y += random.randint(miny,maxy)
 
@@ -57,11 +58,7 @@ nb_particles = 10
 my_particles = []
 
 for n in range(nb_particles):
-    size = random.randint(7,15)
-    x = random.randint(size, width - size)
-    y = random.randint(size, height - size)
-    dod = pygame.time.get_ticks() + 10 * random.randint(50,255)
-    particle = Particle((x, y), size, dod)
+    particle = Particle(width, height)
     my_particles.append(particle)
 
 running = True
