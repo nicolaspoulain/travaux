@@ -6,7 +6,7 @@ import random
 import math
 import numpy
 
-(nb_cols, nb_rows) = (40,23)
+(nb_cols, nb_rows) = (20,15)
 k_zoom = 20
 wall_color = (255,255,255)
 
@@ -18,12 +18,11 @@ pygame.display.set_caption('Amaze')
 clock = pygame.time.Clock()
 
 def allequal(m):
-  ret = 1
   for i in range(nb_rows):
     for j in range(nb_cols):
       if m[i][j] != m[0][0]:
-        ret = 0
-  return ret
+        return 0
+  return 1
 
 h_wall = numpy.random.randint(1,2, size=(nb_rows,nb_cols))
 for i in range(nb_cols):
@@ -31,13 +30,10 @@ for i in range(nb_cols):
 v_wall = numpy.random.randint(1,2, size=(nb_rows,nb_cols))
 for i in range(nb_rows):
     v_wall[i][0] = 1
-#print h_wall
-#print v_wall
 
 cells =[]
 for i in range(nb_rows):
     cells.append([j+1 for j in range(i*nb_cols, (i+1)*nb_cols)])
-#print cells
 
 #for n in range(42):
 while not(allequal(cells)):
@@ -56,9 +52,6 @@ while not(allequal(cells)):
 
     if len(possible)>0 :
       (k,l) = random.choice(possible)
-      #print (i,j), (k,l)
-      #print cells[i][j] , cells[k][l]
-      #print cells
       ## Fusionne les cellles
       afus = cells[k][l]
       for ii in range(nb_rows):
@@ -69,14 +62,12 @@ while not(allequal(cells)):
       ## Mur horizontal
       if i-k == 0:
           v_wall[i][1+(j+l)/2] = 0
-          #print h_wall
       ## Mur vertical
       else:
           h_wall[1+(i+k)/2][j] = 0
-          #print v_wall
     screen.fill(0)
-    # Limit to 60 frames per second
-    clock.tick(100)
+    # Limit to 100 frames per second
+    #clock.tick(100)
     for i in range(nb_cols):
         for j in range(nb_rows):
             A = (i * k_zoom, j * k_zoom )
@@ -91,7 +82,8 @@ while not(allequal(cells)):
     pygame.draw.line(screen, (255,255,255), (0,nb_rows*k_zoom), (nb_cols*k_zoom,nb_rows*k_zoom))
     pygame.display.flip()
 
-print cells
+print v_wall
+print h_wall
 running = True
 #running = False
 while running:
