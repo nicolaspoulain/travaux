@@ -1,177 +1,195 @@
-% Vim Memo
-% NPO
-% Janvier 2014
+// vim:ft=txt
 
-#Vim Memo
+                           | ENTERING INSERT MODE
+ ------------------------- | ---------------------------------------------
+ i , I                     | Insert text before cursor (I is ^i)
+ a , A                     | Append text after  cursor (A is $A)
+ o , O                     | insert a new line after, before current line
+ R , r{char}               | Replace instead of insert (r is for one char)
+ c{motion} , cw , C        | Change ie delete and start insert (C is c$)
+ s                         | Substitute char on cursor (s is cl)
+ 
+                           | MOTIONS
+ ------------------------- | ---------------------------------------------
+ h , j , k , l             | left, down, up, right
+ 0 , $ , ^                 | start, end of line , first non blank char
+ w , e                     | start of next Word, End of word
+ b , ge                    | start of prev Word, End of prev word
+ t{char} , f{char}         | move For,To next(maj:prev) {char} (Repeat ;,)
+ /{ptrn} , ?{ptrn}         | Search for next, previous {ptrn} (Repeat n)
+ gg , G                    | First line of file, last line of file
+ ,,w   ,   ,,b             | Start of word forward, backward *EASYMOTION*
+ ,,e   ,   ,,ge            | End   of word forward, backward *EASYMOTION* 
+ ------------------------- | ---------------------------------------------
+ <C-f> , <C-b>             | One  page down, up
+ <C-d> , <C-u>             | Half page down, up
+ '.                        | Jump to last modification line
 
- |                            | MOVE TO...                                     |
- | :------------------------- | :--------------------------------------------- |
- | `h j k l`                  | Left, down, up, right                          |
- | `0 £ ^`                    | Start, end of line - first nonBlank char       |
- | `w e`                      | Start, end of word                             |
- | `gg G`                     | First, last line of file                       |
- | `Ctrl-d Ctrl-u`            | Half page down, up                             |
- | `Ctrl-b Ctrl-f`            | Page down, up                                  |
+                           | SPLIT ET RESIZE
+ ------------------------- | ---------------------------------------------
+  <C-w> =                  | Equalize width and height of all windows
+  <C-w>_   ,  <C-w>|       | Maximize height, width of the active window
+ 9<C-w>_   , 9<C-w>|       | Set active window height, width to 9 units
+ 9<C-w> +- , 9<C-w> ><     | In/Dec-rease window 9 units height, width 
+  <C-w>H   , <C-w>L        | Place la fenêtre courante à gauche /à droite
+  <C-w>J   , <C-w>K        | Place la fenêtre courante en haut /en bas [^3]
 
- |                            | RECHERCHE                                      |
- | :------------------------- | :--------------------------------------------- |
- | `*`                        | Recherche pour le mot exact sous le curseur    |
- | `g*`                       | Recherche pour le mot partiel sous le curseur  |
- | `[I`                       | Affiche lignes contenant mot sous le curseur   |
- | `:g/foo`                   | Affiche les lignes contenant foo               |
- | `:g/foo/d`                 | supprime les lignes contenant chaîne foo       |
- | `:v/foo/d`                 | supprime lignes ne contenant pas foo           |
- | `:g/^[\.]*$/d`             | supprime les lignes vides                      |
+                           | BUFFERS (better with *BUFFERLINE*)
+ ------------------------- | ---------------------------------------------
+ :e. , :Vex , Sex(plore)   | File explorer in new window, in split window 
+ :e myFile                 | Ouvre un nouveau buffer avec myFile
+ :ls                       | Pareil que :buffers, mais en plus court
+ :bw                       | Ferme le buffer courant
+ :sb x , vsp | bx          | Place le buffer x dans une fenêtre (v)splitée
+ :sball                    | Split all buffers
+ :bn , :bp                 | Next, previous buffer (maped to F2 F3)
 
- |                            | SPLIT ET RESIZE                                |
- | :------------------------- | :--------------------------------------------- |
- | `:res 60`                  | Définit la hauteur de la fenêtre               |
- | `:vertical resize 80`      | Définit la largeur de la fenêtre               |
- | `:res {+,-}10`             | Augmente/réduit la hauteur de la fenêtre       |
- | `10 Ctrl-w {+,-}`          | "" idem                                        |
- | `:vertical resize {+,-}10` | Augmente/réduit la largeur de la fenêtre       |
- | `10 Ctrl-w {>,<}`          | " " idem                                       |
- | `Ctrl-w =`                 | Égalise la taille des fenêtres                 |
- | `Ctrl-w _`                 | Augment au maximum la taille de la fenêtre     |
- | `Ctrl-w s`                 | Partage la fenêtre courante en deux            |
- | `Ctrl-w H`  `Ctrl-w L`     | Place la fenêtre courante à gauche /à droite   |
- | `Ctrl-w J`  `Ctrl-w K`     | Place la fenêtre courante en haut /en bas [^3] |
+                           | RECHERCHE, REMPLACEMENT ET SUPPRESSIONS
+ ------------------------- | ---------------------------------------------
+ * , g*                    | Recherche mot exact/partiel sous le curseur
+ %                         | Match brackets {}[]()
+ [I                        | Affiche lignes contenant mot sous le curseur
+ :g/foo                    | Affiche les lignes contenant foo
+ :g/foo/d                  | Supprime les lignes contenant chaîne foo
+ :v/foo/d                  | Supprime lignes ne contenant pas foo
+ :%s/\s\+$//               | Supprime les espaces de fin de ligne
+ :g/^[\.]*$/d              | Supprime les lignes vides
+ :s/foo/bar/               | Remplace le 1er  foo de ligne courante par bar
+ :s/.*\zsfoo/bar/          | Remplace dernier foo de ligne courante par bar
+ :s/foo/bar/g              | Remplace tous foo de ligne courante par bar
+ :%s/foo/bar/g             | Remplace TOUS foo du fichier par bar
+ :%s/foo/bar/gc            | " " idem avec demande de confirmation
+ :%s/\<foo\>//g            | Supprime le mot "foo".
+ :%s/.*\<foo\>//           | Supprime "foo" et tout ce qui le précède.
+ :%s/\<foo\>.*//           | Supprime "foo" et tout ce qui le suit.
+ :%s/.*\ze\<foo\>//        | Supprime tout ce qui précède le mot "foo"
+ :%s/\<foo\>\zs.*//        | Supprime tout ce qui suit le mot "foo"
+ :%s/\<foo\>.\{5}//        | Supprime "foo" et les 5 catactères qui suivent
+ :%s#<\_.\{-1,}>##g        | Delete html tags possibly multi-line
+ :%s/<!--\_p\{-}-->//g     | Delete multiple line comments
+ Vu , VU                   | Lowercase line, uppercase line 
+ ggguG                     | lowercase entire file
+ :& , :~                   | Repeat last substitute
+ g%                        | Normal mode repeat last substitute
 
- |                            | BUFFERS  (better with bufferline)              |
- | :------------------------- | :--------------------------------------------- |
- | `:e newFile`               | ouvre un nouveau buffer avec newFile           |
- | `:ls`                      | pareil que :buffers, mais en plus court        |
- | `:bw`                      | ferme le buffer courant                        |
- | `:sb x` `vsp | bx`         | place le buffer x dans une fenêtre splitée     |
- | `:bn :bp`   maped to F2 F3 | Opens next, previous buffer                    |
+     |         | --- ANCHORS ----
+     | ^   $   | Start/end of line
+     | \<  \>  | Beginning/end of a word
+     | [ ]     | Any characters listet
+     | [^ ]    | Any characters except those listet
 
- |                            | REMPLACEMENT ET SUPPRESSIONS                   |
- | :------------------------- | :--------------------------------------------- |
- | `:s/foo/bar/`              | remplace le 1er foo de ligne courante par bar  |
- | `:s/foo/bar/g`             | remplace tous foo de ligne courante par bar    |
- | `:%s/foo/bar/`             | remplace TOUS foo du fichier par bar           |
- | `:%s/foo/bar/g`            | remplace TOUS foo du fichier par bar           |
- | `:%s/foo/bar/gc`           | " " idem avec demande de confirmation          |
- | `:%s/.*\zsfoo/bar/`        | remplace dernière occurence de "foo" par "bar" |
- | `:%s/\<foo\>//g`           | Supprime "foo".                                |
- | `:%s/.*\<foo\>//`          | Supprime "foo" et tout ce qui le précède.      |
- | `:%s/\<foo\>.*//`          | Supprime "foo" et tout ce qui le suit.         |
- | `:%s/.*\ze\<foo\>//`       | Supprime tout ce qui précède le mot "foo"      |
- | `:%s/\<foo\>\zs.*//`       | Supprime tout ce qui suit le mot "foo"         |
- | `:%s/.*\(\<foo\>\).*/\1/`  | Supprime tout ce qui entoure le mot "foo"      |
- | `:%s/\<foo\>.\{5}//`       | Supprime "foo" et les 5 catactères qui suivent |
- | `:%s/\s\+$//`              | Supprime les espaces de fin de ligne[^5]       |
- | `:s/.*/\U&/`               | passe la ligne courante en majuscule           |
- | `:%s/^foo//`               | Supprime TOUS les foo placés en début de ligne |
+     |                   | ---- METACARACTÈRES ---
+     |  .                | Any character except newline
+     | \d                | Digit character [0-9]
+     | \a                | Alphabetic character [A-Za-z]
+     | \w                | Word character [0-9A-Za-z_]
+     | \l , \u           | Lowercase, uppercase  character
+     | \p                | Printable character
+     | \s                | Whitespace character
+     | \_\x              | Any character of class x, including newline
+     | Greedy : ^Greedy  | Quantifier
+     | *      : \{-}     | 0 ou plus
+     | \+     : \{-1}    | 1 ou plus
+     | \=     : \{-0,1}  | 0 ou 1 fois
+     | \{n}   :          | n fois exactement
+     | \{n,}  : \{-n,}   | n fois au moins
+     | \{,m}  : \{-,m}   | m fois au plus
+     | \{n,m} : \{-n,m}  | Entre n et m fois
 
-                  |        | ANCHORS                            |
-                  | ^      | start of line                      |
-                  | $      | end of line                        |
-                  | \<     | beginning of a word                |
-                  | \>     | end of a word                      |
-                  | `[ ]`  | any characters listet              |
-                  | `[^ ]` | any characters except those listet |
+     |          | ---- REPLACEMENT ----
+     | &        | The whole matched pattern
+     | \1 \2... | Matches text in 1st, 2nd ... pair of \(\)
+     | \l  \u   | Next char  made lowercase / uppercase
+     | \L  \U   | Next charS made lowercase / uppercase       |
+     | \E       | End of \u and \l
 
-                  |                        | METACARACTÈRES                |
-                  | `.`                    | any character except new line |
-                  | `\s`                   | whitespace character          |
-                  | `\d`                   | digit                         |
-                  | `\h`                   | head of word character        |
-                  | `\p`                   | printable character           |
-                  | `\w`                   | word character                |
-                  | `\a`                   | alphabetic character          |
-                  | `\l`                   | lowercase character           |
-                  | `\u`                   | uppercase character           |
-                  | Greedy    : ^Greedy    | Quantifier                    |
-                  | `* `      : `\{-} `    | 0 ou plus                     |
-                  | `\+ `     : `\{-1} `   | 1 ou plus                     |
-                  | `\= `     : `\{-0,1} ` | 0 ou 1 fois                   |
-                  | `\{n} `   :            | n fois exactement             |
-                  | `\{n,} `  : `\{-n,} `  | n fois au moins               |
-                  | `\{,m} `  : `\{-,m} `  | m fois au plus                |
-                  | `\{n,m} ` : `\{-n,m} ` | entre n et m fois             |
+                           | SELECTION DE BLOC TEXTE
+ ------------------------- | ---------------------------------------------
+ v , <C-v>                 | Selection de texte/ de colonne
+ V                         | Selection de lignes entières
+ gv                        | Resélectionne le bloc précédemment défini
+ h j k l' , D              | *DRAGVISUAL*:    déplace bloc, duplique
+ gq                        | Formate la sélection
+ :%s/\%Vold/new/g          | Do a substitute on last visual area
 
-                  |            | REPLACEMENT                                 |
-                  | `& `       | the whole matched pattern                   |
-                  | `\0`       | the whole matched pattern                   |
-                  | `\1 \2...` | matches text in 1st, 2nd ... pair of `\(\)` |
-                  | `~ `       | the previous substitute string              |
-                  | `\L` `\U`  | make lowercase / uppercase                  |
-                  | `\l` `\u`  | next character made lowercase / uppercase   |
-                  | `\E`       | end of \U and \L                            |
-                  | `\r`       | split line in two at this point             |
+                           | INSERTION SUR PLUSIEURS LIGNES
+ ------------------------- | ---------------------------------------------
+ <C-v> jj $ A foo Esc      | Insertion à la fin des lignes d'un bloc
+ <C-v> jj I foo Esc        | Insertion dans une colonne d'un bloc
+ <C-v> jj I # Esc          | Commente les lignes d'un bloc
+ V jj s/^/#                | Commente les lignes d'un bloc (autre méthode)
 
- |                            | SELECTION DE BLOC TEXTE                        |
- | :------------------------- | :--------------------------------------------- |
- | `v       lljj`             | selection de texte                             |
- | `Shift-v jj`               | selection de lignes entières                   |
- | `Ctrl-v  lljj`             | selection de colonnes                          |
- | `gv`                       | Resélectionne le bloc                          |
- | `h j k l' , `D`            | *DRAGVISUAL*:    déplace bloc, duplique        |
+                           | INDENTATION, AUTOINDENTATION
+ ------------------------- | ---------------------------------------------
+ >> , <<                   | Shift right, shift left
+ gg=G                      | Si marche pas, set ft=html  + set si [^6]
+ == , =                    | AutoIndent current line, current block
+ :Tabularize /x            | Aligns statements on char x: (*TABULARIZE*)
 
- |                            | INSERTION SUR PLUSIEURS LIGNES                 |
- | :------------------------- | :--------------------------------------------- |
- | `Ctrl-v jj $ A foo Esc`    | Insertion à la fin des lignes d'un bloc        |
- | `Ctrl-v jj I foo Esc`      | Insertion dans une colonne d'un bloc           |
- | `Ctrl-v jj I # Esc`        | Commente les lignes d'un bloc                  |
- | `Shift-v jj s/^/#`         | Commente les lignes d'un bloc (autre méthode)  |
+                           | REGISTRES
+ ------------------------- | ---------------------------------------------
+ "5yy" , "hyy              | Copie la ligne dans le registre 5 (ou h)
+ :reg                      | Liste les registres
+ "5p , "hp , i<C-r>h       | Colle le contenu du regsitre 5 (ou h)
+ "_dd                      | Delete to BlackHole don't affect any register
 
- |                            | INDENTATION, AUTOINDENTATION ET *TABULARIZE*   |
- | :------------------------- | :--------------------------------------------- |
- | `>>` `<<`                  | Indente ou desindente la ligne courante
- | `gg=G`                     | Si marche pas, set `ft=html` + `set si`[^6]    |
- | `Shift-v =`                | Indente un bloc                                |
- | `==`                       | indente la ligne courante                      |
- | `:Tabularize /:`           | aligns statements on :                         |
- | `:Tabularize /&&`          | aligns statements on &&                        |
+                           | FOLDING COMMANDS [^1]
+ ------------------------- | ---------------------------------------------
+ za                        | Toggle state of one fold ( zA  recurs [^2])
+ zR                        | Opens ALL folds ( zr  decr foldlevel by 1)
+ zM                        | Closes ALL folds ( zM  incr foldlevel by 1)
+ zf%                       | Creates fold from a delimitor to its brother
+ V jj zf                   | Creates fold from visual block
+ zj , zk                   | Move to the next, previous fold
+ [z , ]z                   | Move to start/ end of open fold
 
- |                            | REGISTRES                                      |
- | :------------------------- | :--------------------------------------------- |
- | `"5yy"` `"hyy`             | Copie la ligne dans le registre 5 (ou h)       |
- | `:reg`                     | Liste les registres                            |
- | `"5p`  `"hp`               | Colle le contenu du regsitre 5 (ou h)          |
+                           | RECORDING
+ ------------------------- | ---------------------------------------------
+ qa  ,..., qz              | Démarre enregistrement action (registre a...z)
+ q                         | Stopppe enregistrement action [^8]
+ @a  @z                    | Joue  l'enregistrement action (registre a...z)
+ 6@a                       | Joue 6x enregistrement action
+ @@                        | Rejoue le dernier enregistrement
+ 6@@                       | Rejoue 6x le dernier enregistrement
+ "ap  <C-R>a               | Affiche enregistrement normal/insert mode
+ "add                      | Réenregistre action dans le registre a
 
- |                            | FOLDING COMMANDS [^1]                          |
- | :------------------------- | :--------------------------------------------- |
- | `za`                       | Toggle state of one fold (`zA` recurs [^2])    |
- | `zR`                       | Opens ALL folds (`zr` decr foldlevel by 1)     |
- | `zM`                       | Closes ALL folds (`zM` incr foldlevel by 1)    |
- | `zf%`                      | creates fold from a delimitor to its brother   |
- | `V jj zf`                  | creates fold from visual block                 |
- | `zf#j`                     | creates fold from the cursor down # lines      |
- | `zf/string`                | creates fold from the cursor to string         |
- | `zj` `zk`                  | moves the cursor to the next, previous fold    |
- | `zd` `zE`                  | deletes the fold at the cursor, ALL folds      |
- | `[z` `]z`                  | move to start/ end of open fold                |
+                           | DIVERS
+ ------------------------- | ---------------------------------------------
+ .                         | Repeat last modification
+ @:                        | Repeat last : command (then @@)
+ :history                  | List of all your commands
+ <C-X><C-L>                | Line complete SUPER USEFUL
+ /<C-R><C-W>               | Pull <cword> onto search/command line
+ ga , g8                   | Display hex value of char under cursor
+ :digraphs  ga             | Display table of utf8 chars
+ i<C-v>233                 | Insert é
+ <C-a> , 9<C-x>            | Increment,decrement first number after cursor
+ :set paste                | Avant de coller depuis le navigateur
+ :set nopaste              | Après avoir collé depuis le navigateur [^7]
+ :sort [n]                 | Trier sur première colonne [numéric]
+ :%!sort -t';' -k3 [-n]    | Sort column 3 of coma separated [numeric]
 
- |                            | DIVERS                                         |
- | :------------------------- | :--------------------------------------------- |
- | `:set paste`               | Avant de coller depuis le navigateur           |
- | `:set nopaste`             | Après avoir collé depuis le navigateur [^7]    |
- | `:sort [n]`                | Trier sur première colonne [numérique] [^10]   |
- | `:%!sort -n -k 3           |     à l'aide de gnu sort                       |
- | `qa` ... `qz`              | Démarre enregistrement action (registre a...z) |
- | `q`                        | stopppe enregistrement action [^8]             |
- | `[6]@a`                    | joue 6x enregistrement action (registre a...z) |
+                           | PLUGINS
+ ------------------------- | ---------------------------------------------
+ <leader>gs                | *FUGITIVE* :Gstatus - un/stage, cc commt msg
+ :TagbarToggle             | *TAGBAR* (maped to F8)
 
- |                            | PLUGINS                                        |
- | :------------------------- | :--------------------------------------------- |
- | `<leader><leader>w`        | *EASYMOTION*                                   |
- | `<leader>gs`               | *FUGITIVE* :Gstatus `-`un/stage, `cc`commt msg |
+                           | TAGS and *SURROUND*
+ ------------------------- | ---------------------------------------------
+!/  a< |  a"  |\ at     !  | Around (or All) the delimitor
+ <p id= " xy " > ab </p>   |    example 
+  \ i<   |i"|/  |it|       | Inside the delimitor (t for a pair of tags)
+cst<i>                     | <p>abc</p> to <i>abc</i>  *SURROUND*
+dst                        | <p>abc</p> to abc         *SURROUND*
+V S"                       | abc to "abc"              *SURROUND*
+cs")                       | "abc" to (abc)            *SURROUND* 
+cs)<p>                     | (abc) to <p>abc</p>       *SURROUND*
 
- |                            | TAGS and *SURROUND*                            |
- | :------------------------- | :--------------------------------------------- |
- | `S<h3>`                    | Add Surround to visual sélection               |
- | `{d,y,v}it`                | deletes, yanks or visual Inside Tags           |
- | `{d,y,v}at`                | deletes, yanks or visual Around Tags           |
- | `cst<h3>`                  | Change Surrounding Tag (current) to <h3>       |
- | `cs">` `cs"<h3>`           | Change Surrounding " to  <..> / <h3></h3>      |
- | `ds"`                      | Delete le surround "                           |
-
-[^1]:  Dans le .vimrc `:mkview    " save folds` & `:lowercaseadview  " restore folds`
+[^1]:  Dans le .vimrc :mkview    " save folds  & :lowercaseadview  " restore folds
 [^2]: za (resp. zA) toggles between zo & zc (resp. zO & zC)
 [^3]: The lower case equivalents move focus instead of moving the window.
-[^5]: In a search, `\s` finds whitespace (a space or a tab), and `\+` finds one or more occurrences.
 [^6]: donner le bon le filetype et enclancher le smartindent
-[^7]: More info in http://www.vim.org/tips/tip.php?tip_id=330 *Autre méthode* :set pastetoggle=<F3>
+[^7]: More info in http://www.vim.org/tips/tip.php?tip_id=330
+           *Autre méthode* :set pastetoggle=<F3>
 
